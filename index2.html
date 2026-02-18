@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Services</title>
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    /* СБРОС СТИЛЕЙ */
+    .featured-services-container * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПРОПОРЦИЯМИ КАРТОЧЕК */
+    :root {
+        --card-width-ratio: 1.5; /* ИЗМЕНЯЙТЕ ЭТО ДЛЯ ВЫТЯГИВАНИЯ В БОК */
+        /* 1.0 = квадрат, 1.5 = прямоугольник, 2.0 = очень вытянутый */
+        --card-base-height: 250px; /* БАЗОВАЯ ВЫСОТА */
+    }
+
+    /* СЕКЦИЯ FEATURED SERVICES */
+    .featured-services-section {
+        position: relative;
+        width: 100%;
+        padding: 120px 0;
+        background-color: #ffffff;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* ТРЕУГОЛЬНЫЙ РАЗДЕЛИТЕЛЬ СНИЗУ */
+    .section-divider {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+        z-index: 1;
+    }
+
+    .section-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 150px;
+    }
+
+    .divider-fill {
+        fill: #f8f9fa;
+    }
+
+    /* КОНТЕЙНЕР - УВЕЛИЧИМ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
+    .services-wrapper {
+        max-width: 1400px; /* УВЕЛИЧИЛИ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ЗАГОЛОВОК */
+    .section-title {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .section-title h2 {
+        font-size: 48px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #333;
+    }
+
+    .title-light {
+        color: #999;
+        font-weight: 300;
+    }
+
+    .title-bold {
+        color: #111;
+        font-weight: 800;
+    }
+
+    /* СЕТКА КАРТОЧЕК */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    /* КАРТОЧКИ УСЛУГ - ВЫТЯНУТЫЕ В БОК (ИСПРАВЛЕННО!) */
+    .service-card {
+        position: relative;
+        /* УБИРАЕМ ФИКСИРОВАННУЮ ВЫСОТУ И ИСПОЛЬЗУЕМ aspect-ratio */
+        height: 0; /* ВАЖНО: обнуляем высоту */
+        padding-bottom: calc(100% / var(--card-width-ratio)); /* МАГИЯ! */
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.4s ease;
+        text-decoration: none;
+        color: white;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    /* ЛЕГКОЕ УВЕЛИЧЕНИЕ ТЕНИ ПРИ НАВЕДЕНИИ */
+    .service-card:hover {
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ФОН КАРТОЧКИ - АДАПТИРУЕМ ПОД ВЫТЯНУТЫЕ КАРТОЧКИ */
+    .card-background {
+    position: absolute;
+    inset: 0;
+
+    width: 160%;
+    height: 100%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-position: left center;
+
+    transition: transform 1.8s ease-out;
+    will-change: transform;
+}
+
+    /* ПРИ НАВЕДЕНИИ: сдвигаем влево, показывая левую часть */
+    .service-card:hover .card-background {
+    transform: translateX(-25%);
+}
+
+    /* ТЕМНЫЙ НАКЛАДНОЙ СЛОЙ */
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+        opacity: 0.7;
+    }
+
+    /* СОДЕРЖИМОЕ КАРТОЧКИ - ТЕПЕРЬ АБСОЛЮТНОЕ ПОЗИЦИОНИРОВАНИЕ */
+    .card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 25px;
+        z-index: 3;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    /* ТЕКСТОВАЯ ЧАСТЬ */
+    .card-text {
+        flex: 1;
+    }
+
+    /* ЗАГОЛОВОК УСЛУГИ */
+    .card-service-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* ССЫЛКА "ПОДРОБНЕЕ" */
+    .card-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        opacity: 0.9;
+    }
+
+    /* АДАПТИВНОСТЬ */
+
+    /* ПЛАНШЕТЫ: 2 КОЛОНКИ */
+    @media (max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+        }
+        
+        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ ПЛАНШЕТОВ */
+        :root {
+            --card-width-ratio: 1.4;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-service-title {
+            font-size: 17px;
+        }
+    }
+
+    /* МОБИЛЬНЫЕ: 1 КОЛОНКА */
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 600px; /* УВЕЛИЧИЛИ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
+            margin: 0 auto;
+        }
+        
+        .featured-services-section {
+            padding: 80px 0 60px;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+        
+        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ МОБИЛЬНЫХ */
+        :root {
+            --card-width-ratio: 1.3;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-background {
+            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 180%;
+        }
+        
+        .service-card:hover .card-background {
+            transform: translateX(-15%);
+        }
+    }
+
+    /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+    @media (max-width: 480px) {
+        .services-grid {
+            gap: 15px;
+        }
+        
+        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ ТЕЛЕФОНОВ */
+        :root {
+            --card-width-ratio: 1.2;
+        }
+        
+        .card-content {
+            padding: 18px;
+        }
+        
+        .card-service-title {
+            font-size: 16px;
+        }
+        
+        .card-link {
+            font-size: 13px;
+        }
+    }
+</style>
+</head>
+<body>
+        <!-- НАЧАЛО СЕКЦИИ - КОПИРУЙТЕ ОТСЮДА -->
+    <section class="featured-services-section">
+        <!-- Треугольный разделитель -->
+        <div class="section-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+        
+        <div class="services-wrapper">
+            <!-- Заголовок секции -->
+            <div class="section-title">
+                <h2>
+                    <span class="title-light">НАШИ</span>
+                    <span class="title-bold">УСЛУГИ</span>
+                </h2>
+            </div>
+            
+            <!-- Одна сетка для всех карточек -->
+            <div class="services-grid">
+                <!-- Карточка 1 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/1back.webp');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Защита кузова</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Карточка 2 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/2back.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Техническое обслуживание</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Карточка 3 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/3back.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Уход за кузовом</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Карточка 4 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/4back.jpeg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Уход за салоном</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Карточка 5 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/5back.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Автостёкла</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Карточка 6 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/6back.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Мототехника</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Карточка 7 -->
+                <a href="#" class="service-card">
+                    <div class="card-background" style="background-image: url('./static/7back.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <div class="card-text">
+                            <h3 class="card-service-title">Подарочные сертификаты</h3>
+                            <div class="card-link">
+                                <span>Подробнее</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

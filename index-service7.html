@@ -1,0 +1,584 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TINT MASTERS - Детейлинг автомобилей</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon (иконка сайта) -->
+  <link rel="icon" href="./Logo-Tint.png" type="image/png">
+  <link rel="stylesheet" href="./static/style.css">
+  <link rel="stylesheet" href="./static2/style2.css">
+  <script src="./static/burger.js" defer></script>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/index.html">
+        <img src="./Logo-Tint.png" alt="TINT MASTERS Logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">TINT MASTERS</div>
+          <div class="brand-sub">Детейлинг студия</div>
+        </div>
+      </a>
+
+      <!-- Десктоп меню -->
+      <nav class="nav" aria-label="Главная навигация">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="/index.html#about">О нас</a></li>
+          <li><a class="nav-link" href="/index.html#works">Наши работы</a></li>
+          <li><a class="nav-link" href="/index.html#services">Услуги</a></li>
+          <li><a class="nav-link" href="/index.html#process">Процесс работы</a></li>
+          <li><a class="nav-link" href="#contacts">Как нас найти</a></li>
+          <li><a class="nav-link" href="#form">Записаться</a></li>
+          <li><a class="nav-link" href="/index-Avto.html">Заказать Авто</a></li>
+        </ul>
+      </nav>
+
+      <!-- Бургер справа -->
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="header-contacts">
+        <a href="tel:89319555009" class="header-phone">
+          8&nbsp;(931)&nbsp;955-50-09
+        </a>
+
+        <div class="header-socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Затемнение -->
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+
+    <!-- Мобильное меню (выезжает справа) -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" aria-hidden="true">
+      <div class="mobile-nav__top">
+        <div class="mobile-nav__title">МЕНЮ</div>
+        <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+      </div>
+
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="/index.html#about">О нас</a></li>
+        <li><a class="mobile-nav__link" href="/index.html#works">Наши работы</a></li>
+        <li><a class="mobile-nav__link" href="/index.html#services">Услуги</a></li>
+        <li><a class="mobile-nav__link" href="/index.html#process">Процесс работы</a></li>
+        <li><a class="mobile-nav__link" href="#contacts">Как нас найти</a></li>
+        <li><a class="mobile-nav__link" href="#form">Записаться</a></li>
+        <li><a class="mobile-nav__link" href="/index-Avto.html">Заказать Авто</a></li>
+      </ul>
+
+      <!-- CONTACTS (внизу бургера) -->
+      <div class="mobile-nav__contacts">
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Телефон</span>
+          <a href="tel:+79319555009" class="mobile-contact__value">
+            8 (931) 955-50-09
+          </a>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Адрес</span>
+          <span class="mobile-contact__value">
+            Кириши<br>
+            ул. проспект Победы, 33
+          </span>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Время работы</span>
+          <span class="mobile-contact__value">
+            Пн–Пт 10:00–20:00<br>
+            Вс — по записи
+          </span>
+        </div>
+      </div>
+
+      <div class="mobile-nav__socials">
+        <a href="https://vk.com/tint_ms" target="_blank" aria-label="VK">
+          <i class="fa-brands fa-vk"></i>
+        </a>
+
+        <a href="https://instagram.com/tint_masters_kirishi" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://youtube.com/yourpage" target="_blank" aria-label="Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section (Главный баннер с видео) -->
+  <section class="hero">
+  <video autoplay muted loop id="hero-video">
+    <source src="./IMG_1879.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <h2>Профессиональный детейлинг для вашего автомобиля</h2>
+    <p>Мы знаем, как важно, чтобы ваш автомобиль выглядел идеально</p>
+  </div>
+</section>
+<section class="after-hero"></section>
+
+  <!-- СЕКЦИЯ: Подарочные сертификаты -->
+  <section class="service-page" id="gift-certificates">
+    <div class="container">
+      <a href="/index.html#services" class="back-link">← Все услуги</a>
+    </div>
+
+    <div class="service-hero container">
+      <div class="service-header">
+        <h1 class="service-title">Подарочные сертификаты</h1>
+        <p class="service-subtitle">Идеальный подарок для тех, кто ценит чистоту и комфорт</p>
+      </div>
+
+      <div class="service-layout layout-1">
+        <div class="service-media">
+          <div class="image-wrapper" style="background: #f8f8f8; padding: 20px;">
+            <img src="./static2/gift1.jpg" alt="Подарочные сертификаты Tint Masters"
+              style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+        </div>
+
+        <div class="service-content">
+          <div class="content-wrapper">
+            <h2>Подарите заботу о автомобиле</h2>
+            <p><strong>Подарочные сертификаты от Tint Masters</strong> – это идеальный подарок для тех, кто ценит
+              чистоту, комфорт и безупречный вид автомобиля. С таким подарком вы дарите не просто услугу, а заботу,
+              внимание к деталям и удовольствие от идеального состояния авто.</p>
+
+            <div class="highlight-list">
+              <strong>Варианты сертификатов:</strong>
+              <ul>
+                <li><strong>На определённую сумму</strong> (например, 5000, 10000 или 15000 рублей): позволяет выбрать
+                  любые услуги из нашего ассортимента</li>
+                <li><strong>На конкретные услуги</strong>: химчистка салона, комплексная детейлинг-мойка, антидождь,
+                  полировка кузова, защита кузова</li>
+                <li><strong>Комбинированные сертификаты</strong>: набор популярных услуг по специальной цене</li>
+                <li><strong>Индивидуальный дизайн</strong>: возможность создать персонализированный сертификат с именем
+                  получателя</li>
+              </ul>
+            </div>
+
+            <div class="features">
+              <div class="feature">
+                <span class="feature-icon"></span>
+                <div>
+                  <strong>Практичный подарок</strong>
+                  <p style="font-size: 0.9rem; color: rgba(0,0,0,0.7); margin-top: 5px;">
+                    Автомобиль есть у каждого, а качественный уход - всегда актуальная потребность. Вы дарите то, что
+                    точно пригодится.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <span class="feature-icon"></span>
+                <div>
+                  <strong>Впечатляющий результат</strong>
+                  <p style="font-size: 0.9rem; color: rgba(0,0,0,0.7); margin-top: 5px;">
+                    После наших услуг автомобиль выглядит как новый. Это подарок, результат которого виден сразу и
+                    надолго.
+                  </p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <span class="feature-icon"></span>
+                <div>
+                  <strong>Универсальность</strong>
+                  <p style="font-size: 0.9rem; color: rgba(0,0,0,0.7); margin-top: 5px;">
+                    Подходит для любого случая: день рождения, юбилей, профессиональный праздник, корпоративный подарок.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="why-choose">
+              <h3>Почему выбирают наши подарочные сертификаты?</h3>
+              <ul>
+                <li><strong>Широкий выбор номиналов</strong> - от 2 000 ₽ до 50 000 ₽</li>
+                <li><strong>Длительный срок действия</strong> - 12 месяцев с момента покупки</li>
+                <li><strong>Красивый дизайн</strong> - сертификат в стильной упаковке</li>
+                <li><strong>Простота использования</strong> - онлайн-запись по сертификату</li>
+                <li><strong>Возможность доплаты</strong> - если выбранная услуга дороже номинала сертификата</li>
+                <li><strong>Электронный или бумажный формат</strong> - на выбор</li>
+              </ul>
+            </div>
+
+            <div class="highlight-list">
+              <strong>Для каких случаев идеально подходит:</strong>
+              <ul>
+                <li>День рождения автовладельца</li>
+                <li>Годовщина или семейный праздник</li>
+                <li>Новогодние подарки сотрудникам</li>
+                <li>Корпоративные подарки партнерам</li>
+                <li>"Просто так" - в знак внимания и заботы</li>
+                <li>При покупке нового автомобиля</li>
+              </ul>
+            </div>
+
+            <p
+              style="font-style: italic; background: rgba(0,0,0,0.03); padding: 15px; border-radius: 8px; border-left: 3px solid #000;">
+              <strong>Подарочный сертификат на детейлинг – это практичный и стильный выбор для любого случая:</strong>
+              дня рождения, праздников или просто в знак внимания. Подарите сияние и совершенство авто!
+            </p>
+
+            <div class="price-action">
+              <div class="price-final">от 2 000 ₽</div>
+              <a href="#form" class="service-cta">Приобрести сертификат</a>
+            </div>
+
+            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: rgba(0,0,0,0.6);">
+              *Срок действия сертификата - 12 месяцев с даты покупки. Возможна доставка по городу.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- КОНТАКТЫ + КАРТА -->
+  <section id="contacts" class="section section--dark reveal">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-kicker">CONTACTS</div>
+        <h2 class="sec-title">Как нас найти</h2>
+        <p class="sec-sub">Запишитесь удобным способом — ответим быстро и подскажем лучший вариант.</p>
+      </div>
+
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-label">Телефон</div>
+            <a class="contact-value" href="tel:+79319555009">8 (931) 955-50-09</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Почта</div>
+            <a class="contact-value" href="mailto:tintmasters47@yandex.ru">tintmasters47@yandex.ru</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Адрес</div>
+            <div class="contact-value">Кириши, проспект Победы, 33</div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Часы работы</div>
+            <div class="contact-value">
+              Пн–Пт: 10:00–20:00<br>
+              Вс: по записи
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="cbtn cbtn--primary" href="#form">Задать вопрос</a>
+            <a class="cbtn" href="tel:+79319555009">Позвонить</a>
+            <a class="cbtn" target="_blank" href="https://yandex.ru/maps/">Маршрут</a>
+          </div>
+
+
+        </div>
+
+        <div class="map-card">
+          <!-- Вставь сюда iframe карты (Яндекс/Google/2ГИС). Это заглушка. -->
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A4cd0efb5db2f6d3b6871fe1e7adf350610385e0592f680a6e86d6a1855d10b58&amp;source=constructor"
+            width="800" height="500" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- СТИЛЬНАЯ ФОРМА (вопрос/запись) -->
+  <section id="form" class="section section--dark section--cta reveal">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-left">
+          <div class="sec-kicker">REQUEST</div>
+          <h2 class="sec-title">Запись и вопросы</h2>
+          <p class="sec-sub">
+            Оставьте заявку — мы уточним детали, подберём решение и назовём стоимость.
+            Обычно отвечаем быстро в рабочее время.
+          </p>
+
+          <div class="cta-points">
+            <div class="cta-point">
+              <span class="dot"></span> Бесплатная консультация
+            </div>
+            <div class="cta-point">
+              <span class="dot"></span> Подбор материалов под задачу
+            </div>
+            <div class="cta-point">
+              <span class="dot"></span> Рекомендации по уходу после работ
+            </div>
+          </div>
+        </div>
+
+        <form class="cta-form" action="#" method="post">
+          <div class="field">
+            <label>Имя</label>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+
+          <div class="field">
+            <label>Телефон</label>
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+
+          <div class="field">
+            <label>Услуга</label>
+            <select name="service" required>
+              <option value="" disabled selected>Выберите услугу</option>
+              <option>Защита кузова</option>
+              <option>Техническое обслуживание</option>
+              <option>Уход за кузовом</option>
+              <option>Уход за салоном</option>
+              <option>Автостёкла</option>
+              <option>Мототехника</option>
+              <option>Подарочные сертификаты</option>
+              <option>Другое</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Комментарий</label>
+            <textarea name="message" rows="4" placeholder="Марка авто, год, что хотите сделать"></textarea>
+          </div>
+
+          <label class="agree">
+            <input type="checkbox" required>
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+
+          <button class="submit" type="submit">
+            Отправить заявку <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="small">
+            Нажимая “Отправить”, вы соглашаетесь с политикой обработки данных.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Уведомление об отправке -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+    <div class="toast__icon">✓</div>
+    <div class="toast__text">
+      <div class="toast__title">Заявка отправлена</div>
+      <div class="toast__desc">Мы свяжемся с вами в ближайшее время.</div>
+    </div>
+    <button class="toast__close" id="toastClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+
+
+
+
+
+  <!-- Footer (Низ страницы) -->
+  <footer class="footer">
+    <div class="footer-wave"></div>
+
+    <div class="footer-container">
+      <!-- LEFT -->
+      <div class="footer-col">
+        <div class="logo">TINT<br><span>DETAILING</span></div>
+
+        <p class="footer-text">
+          Кириши, проспект Победы, 33<br>
+          8 (931) 955-50-09<br>
+          tintmasters47@yandex.ru
+        </p>
+
+        <a href="#contacts" class="footer-btn">СВЯЗАТЬСЯ</a>
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-col">
+        <h4></h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#works">Наши работы</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#process">Процесс работы</a></li>
+          <li><a href="#contacts">Как нас найти</a></li>
+          <li><a href="#form">Записаться</a></li>
+          <li><a href="/index-Avto.html">Заказать авто</a></li>
+
+        </ul>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="footer-col">
+        <h4>КОНТАКТЫ</h4>
+
+        <div class="socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      est. 2013 Tint Master Detailing Studio
+    </div>
+  </footer>
+
+
+  <!-- =========================
+     HEADER: эффект при скролле
+     Добавляет класс .is-scrolled,
+     когда страница прокручена вниз
+========================= -->
+  <script>
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 10);
+      },
+      { passive: true }
+    );
+  </script>
+
+
+
+
+
+  <!-- =========================
+     ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
+     Desktop + Mobile
+     с учётом высоты header
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const menuLinks = document.querySelectorAll(
+        '.nav-link[href^="#"], .mobile-nav__link[href^="#"]'
+      );
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          e.preventDefault();
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+
+          // закрываем мобильное меню
+          document.body.classList.remove('no-scroll');
+          document.querySelector('.site-header')?.classList.remove('menu-open');
+          document.getElementById('navOverlay')?.setAttribute('hidden', '');
+        });
+      });
+    });
+  </script>
+
+
+  <!-- =========================
+     FORM SUBMIT
+     Показ уведомления (toast)
+     и очистка формы
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form form.cta-form');
+      const toast = document.getElementById('toast');
+      const toastClose = document.getElementById('toastClose');
+
+      if (!form || !toast || !toastClose) return;
+
+      let toastTimer = null;
+
+      // показать уведомление
+      function showToast() {
+        toast.classList.add('is-show');
+        toast.setAttribute('aria-hidden', 'false');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 4000);
+      }
+
+      // скрыть уведомление
+      function hideToast() {
+        toast.classList.remove('is-show');
+        toast.setAttribute('aria-hidden', 'true');
+      }
+
+      toastClose.addEventListener('click', hideToast);
+
+      // отправка формы
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); // отменяем реальную отправку
+
+        // здесь позже можно добавить fetch / ajax
+
+        showToast();   // показываем уведомление
+        form.reset();  // очищаем поля
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

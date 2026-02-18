@@ -1,0 +1,1593 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TINT MASTERS - Детейлинг автомобилей</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Favicon (иконка сайта) -->
+    <link rel="icon" href="./Logo-Tint.png" type="image/png">
+    <link rel="stylesheet" href="./static/style.css">
+    <script src="./static/burger.js" defer></script>
+
+
+    <!-- Вариант 1 (Inter + Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="/index.html">
+                <img src="./Logo-Tint.png" alt="TINT MASTERS Logo" class="brand-logo" />
+                <div class="brand-text">
+                    <div class="brand-name">TINT MASTERS</div>
+                    <div class="brand-sub">Детейлинг студия</div>
+                </div>
+            </a>
+
+            <!-- Десктоп меню -->
+            <nav class="nav" aria-label="Главная навигация">
+                <ul class="nav-list">
+                    <li><a class="nav-link" href="/index.html#about">О нас</a></li>
+                    <li><a class="nav-link" href="/index.html#works">Наши работы</a></li>
+                    <li><a class="nav-link" href="/index.html#services">Услуги</a></li>
+                    <li><a class="nav-link" href="/index.html#process">Процесс работы</a></li>
+                    <li><a class="nav-link" href="#contacts">Как нас найти</a></li>
+                    <li><a class="nav-link" href="#form">Записаться</a></li>
+                    <li><a class="nav-link" href="/index-Avto.html">Заказать Авто</a></li>
+                </ul>
+            </nav>
+
+            <!-- Бургер справа -->
+            <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false"
+                aria-controls="mobileNav">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="header-contacts">
+                <a href="tel:89319555009" class="header-phone">
+                    8&nbsp;(931)&nbsp;955-50-09
+                </a>
+
+                <div class="header-socials">
+                    <a href="https://vk.com/tint_ms" target="_blank">
+                        <i class="fa-brands fa-vk"></i>
+                    </a>
+                    <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/yourpage" target="_blank">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Затемнение -->
+        <div class="nav-overlay" id="navOverlay" hidden></div>
+
+        <!-- Мобильное меню (выезжает справа) -->
+        <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" aria-hidden="true">
+            <div class="mobile-nav__top">
+                <div class="mobile-nav__title">МЕНЮ</div>
+                <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+            </div>
+
+            <ul class="mobile-nav__list">
+                <li><a class="mobile-nav__link" href="/index.html#about">О нас</a></li>
+                <li><a class="mobile-nav__link" href="/index.html#works">Наши работы</a></li>
+                <li><a class="mobile-nav__link" href="/index.html#services">Услуги</a></li>
+                <li><a class="mobile-nav__link" href="/index.html#process">Процесс работы</a></li>
+                <li><a class="mobile-nav__link" href="#contacts">Как нас найти</a></li>
+                <li><a class="mobile-nav__link" href="#form">Записаться</a></li>
+                <li><a class="mobile-nav__link" href="/index-Avto.html">Заказать Авто</a></li>
+            </ul>
+
+            <!-- CONTACTS (внизу бургера) -->
+            <div class="mobile-nav__contacts">
+                <div class="mobile-contact">
+                    <span class="mobile-contact__label">Телефон</span>
+                    <a href="tel:+79319555009" class="mobile-contact__value">
+                        8 (931) 955-50-09
+                    </a>
+                </div>
+
+                <div class="mobile-contact">
+                    <span class="mobile-contact__label">Адрес</span>
+                    <span class="mobile-contact__value">
+                        Кириши<br>
+                        ул. проспект Победы, 33
+                    </span>
+                </div>
+
+                <div class="mobile-contact">
+                    <span class="mobile-contact__label">Время работы</span>
+                    <span class="mobile-contact__value">
+                        Пн–Пт 10:00–20:00<br>
+                        Вс — по записи
+                    </span>
+                </div>
+            </div>
+
+            <div class="mobile-nav__socials">
+                <a href="https://vk.com/tint_ms" target="_blank" aria-label="VK">
+                    <i class="fa-brands fa-vk"></i>
+                </a>
+
+                <a href="https://instagram.com/tint_masters_kirishi" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="https://youtube.com/yourpage" target="_blank" aria-label="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Главный баннер с видео) -->
+    <section class="hero">
+        <video autoplay muted loop id="hero-video">
+            <source src="./IMG_1879.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h2>Профессиональный детейлинг для вашего автомобиля</h2>
+            <p>Мы знаем, как важно, чтобы ваш автомобиль выглядел идеально</p>
+        </div>
+    </section>
+    <section class="after-hero"></section>
+
+    <section class="product-detail-section order-section">
+
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">Заказать</span>
+                    <span class="title-bold">автомобиль</span>
+                </h1>
+            </div>
+
+            <div class="order-intro">
+                <p>
+                    Привезём <strong>любой автомобиль под заказ</strong> из Европы, Азии и Америки.
+                    Мы работаем с премиальными брендами и редкими комплектациями,
+                    обеспечивая прозрачный и комфортный процесс покупки.
+                </p>
+
+                <p>
+                    Более <strong>10 лет опыта</strong> в подборе, выкупе и доставке автомобилей.
+                    Берём на себя все этапы — от поиска до передачи готового авто «под ключ».
+                    Возможен <strong>trade-in</strong> или выкуп вашего автомобиля.
+                </p>
+            </div>
+
+            <div class="order-features">
+                <div class="feature-item">
+                    <h3>Trade-in / Выкуп</h3>
+                    <p>Выкупим ваш автомобиль или примем в зачёт нового</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Сроки</h3>
+                    <p>Кратчайшие сроки поставки без потери качества</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Подбор</h3>
+                    <p>Помощь в поиске лучшей комплектации под ваши задачи</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Оплата</h3>
+                    <p>Гибкая система оплаты по этапам</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Документы</h3>
+                    <p>Белое таможенное оформление без скрытых нюансов</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Гарантия</h3>
+                    <p>Технически исправный автомобиль с проверкой</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Сервис под ключ</h3>
+                    <p>Полностью готовый к эксплуатации автомобиль</p>
+                </div>
+
+                <div class="feature-item">
+                    <h3>Доп. услуги</h3>
+                    <p>КАСКО / ОСАГО, постановка на учёт, детейлинг, ТО и ТР</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+
+    <section class="sold-cars-title">
+        <h2>Автомобили, которые были проданы</h2>
+    </section>
+
+
+    <style>
+        /* ============================================
+   СЕКЦИЯ ЗАКАЗА АВТОМОБИЛЯ (order-section)
+   ============================================ */
+
+        .product-detail-section.order-section {
+            position: relative;
+            width: 100%;
+            padding: 100px 0 140px;
+            background-color: #f3f3f3;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Заголовок */
+        .product-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .product-title h1 {
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #222;
+            margin: 0;
+        }
+
+        .title-light {
+            color: #888;
+            font-weight: 300;
+        }
+
+
+
+        /* Вступительный текст */
+        .order-intro {
+            max-width: 820px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.65;
+            color: #444;
+        }
+
+        .order-intro p {
+            margin: 0 0 24px;
+        }
+
+        .order-intro strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Преимущества / фичи */
+        .order-features {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px 40px;
+            padding: 0 20px;
+        }
+
+        .feature-item {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: all 0.28s ease;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item h3 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .feature-item p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .product-title h1 {
+                font-size: 38px;
+                letter-spacing: 2px;
+            }
+
+            .order-intro {
+                font-size: 16.5px;
+                padding: 0 15px;
+            }
+
+            .order-features {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-detail-section.order-section {
+                padding: 80px 0 110px;
+            }
+
+            .product-title h1 {
+                font-size: 32px;
+            }
+        }
+
+        /* ============================================
+   СЕКЦИЯ ПРОДАННЫХ АВТОМОБИЛЕЙ
+   ============================================ */
+
+        .sold-cars-title {
+            position: relative;
+            padding: 80px 0 60px;
+            background: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .sold-cars-title h2 {
+            font-size: 42px;
+            color: #111;
+            margin: 0;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .sold-cars-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            background: #222;
+            border-radius: 2px;
+        }
+
+        /* Если хочешь сделать фон чуть другой или добавить лёгкий градиент */
+        .sold-cars-title {
+            /* Вариант с лёгким отличием от предыдущей секции */
+            background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .sold-cars-title {
+                padding: 60px 0 40px;
+            }
+
+            .sold-cars-title h2 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sold-cars-title h2 {
+                font-size: 28px;
+            }
+
+            .sold-cars-title h2::after {
+                width: 70px;
+            }
+        }
+    </style>
+
+
+    <!-- BMW X5 -->
+    <section class="product-detail-section">
+        <div class="section-divider top-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">BMW</span>
+                    <span class="title-bold">X5 xDrive40i</span>
+                </h1>
+            </div>
+
+            <div class="product-grid">
+                <div class="gallery-container">
+                    <div class="main-image">
+                        <img id="main-img-bmw" src="./static3/BWM.jpg" alt="BMW X5 xDrive40i - Главное фото"
+                            loading="lazy">
+                    </div>
+
+                    <div class="thumbnails">
+                        <img class="thumb active" src="./static3/BWM.jpg" alt="Вид спереди"
+                            onclick="changeImage(this, 'main-img-bmw')">
+                        <img class="thumb" src="./static3/BWM2.jpg" alt="Вид сбоку"
+                            onclick="changeImage(this, 'main-img-bmw')">
+                        <img class="thumb" src="./static3/BWM3.jpg" alt="Вид сзади"
+                            onclick="changeImage(this, 'main-img-bmw')">
+                        <img class="thumb" src="./static3/BWM4.jpg" alt="Интерьер"
+                            onclick="changeImage(this, 'main-img-bmw')">
+                        <img class="thumb" src="./static3/BWM5.jpg" alt="Двигатель"
+                            onclick="changeImage(this, 'main-img-bmw')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+
+
+                    <div class="description">
+                        <p><strong>Технические характеристики:</strong></p>
+                        <ul class="specs-list">
+                            <li><strong>Год выпуска:</strong> 2023</li>
+                            <li><strong>Пробег:</strong> 15 000 км</li>
+                            <li><strong>Двигатель:</strong> 3.0 л бензин, турбо</li>
+                            <li><strong>Мощность:</strong> 335 л.с.</li>
+                            <li><strong>Привод:</strong> Полный (xDrive)</li>
+                            <li><strong>Коробка передач:</strong> 8-ступ. автомат</li>
+                            <li><strong>Разгон 0-100 км/ч:</strong> 5.5 сек</li>
+                            <li><strong>Цвет:</strong> Черный сапфир металлик</li>
+                            <li><strong>Салон:</strong> Кожа Vernasca, коричневый</li>
+                        </ul>
+
+                        <p>BMW X5 xDrive40i — флагманский SUV среднего класса с идеальным сочетанием роскоши, динамики и
+                            технологий. Комплектация M Sport включает спортивный обвес, адаптивную подвеску,
+                            светодиодные фары, панорамную крышу, 21" диски. В салоне — цифровая приборная панель,
+                            проекционный дисплей, система Premium Sound, 4-зонный климат-контроль.</p>
+
+                        <p><strong>Особенности:</strong> Парковочный ассистент, камера 360°, адаптивный круиз-контроль,
+                            подогрев всех сидений, бесключевой доступ, беспроводная зарядка.</p>
+
+                        <p><strong>Состояние:</strong> Идеальное, 1 владелец, полная сервисная история. Гарантия 2 года
+                            или 50 000 км.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Bentley Continental GT 2015 -->
+    <section class="product-detail-section">
+        <div class="section-divider top-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">Bentley Continental</span>
+                    <span class="title-bold">GT / 2015</span>
+                </h1>
+            </div>
+
+            <div class="product-grid">
+                <div class="gallery-container">
+                    <div class="main-image">
+                        <img id="main-img-bentley" src="./static3/Bently.webp"
+                            alt="Bentley Continental GT 2015 - Главное фото" loading="lazy">
+                    </div>
+
+                    <div class="thumbnails">
+                        <img class="thumb active" src="./static3/Bently.webp" alt="Вид спереди"
+                            onclick="changeImage(this, 'main-img-bentley')">
+                        <img class="thumb" src="./static3/Bently2.webp" alt="Вид сбоку"
+                            onclick="changeImage(this, 'main-img-bentley')">
+                        <img class="thumb" src="./static3/Bently3.webp" alt="Вид сзади"
+                            onclick="changeImage(this, 'main-img-bentley')">
+                        <img class="thumb" src="./static3/Bently4.webp" alt="Интерьер"
+                            onclick="changeImage(this, 'main-img-bentley')">
+                        <img class="thumb" src="./static3/Bently5.webp" alt="Двигатель"
+                            onclick="changeImage(this, 'main-img-bentley')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+
+
+                    <div class="description">
+                        <p><strong>Технические характеристики:</strong></p>
+                        <ul class="specs-list">
+                            <li><strong>Год выпуска:</strong> 2015</li>
+                            <li><strong>Пробег:</strong> 26 119 км</li>
+                            <li><strong>Двигатель:</strong> 6.0 л W12, турбо</li>
+                            <li><strong>Мощность:</strong> 575 л.с.</li>
+                            <li><strong>Привод:</strong> Полный (AWD)</li>
+                            <li><strong>Коробка передач:</strong> 8-ступ. автомат</li>
+                            <li><strong>Разгон 0-100 км/ч:</strong> 4.0 сек</li>
+                            <li><strong>Цвет:</strong> Белый арктический</li>
+                            <li><strong>Салон:</strong> Кожа Beluga, красные акценты</li>
+                        </ul>
+
+                        <p>Bentley Continental GT 2015 — легендарный Gran Turismo, сочетающий в себе британскую роскошь
+                            и невероятную мощь. Комплектация включает адаптивную пневмоподвеску, керамические тормоза,
+                            21" диски Mulliner, матовую отделку. В салоне — отделка деревом, алмазная строчка на коже,
+                            система звука Naim (1100Вт), массажные сиденья с вентиляцией.</p>
+
+                        <p><strong>Особенности:</strong> Полностью обслуживался у официального дилера, все жидкости
+                            заменены, новые шины Pirelli, полный пакет документов. Отчет Autocheck предоставляется по
+                            запросу.</p>
+
+                        <p><strong>Состояние:</strong> Идеальное косметическое и техническое состояние. 2 владельца. Все
+                            сервисные работы выполнены вовремя.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Porsche Cayenne Coupe -->
+    <section class="product-detail-section">
+        <div class="section-divider top-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">Porsche</span>
+                    <span class="title-bold">Cayenne Coupe Turbo</span>
+                </h1>
+            </div>
+
+            <div class="product-grid">
+                <div class="gallery-container">
+                    <div class="main-image">
+                        <img id="main-img-porsche" src="./static3/Porshe.webp"
+                            alt="Porsche Cayenne Coupe Turbo - Главное фото" loading="lazy">
+                    </div>
+
+                    <div class="thumbnails">
+                        <img class="thumb active" src="./static3/Porshe.webp" alt="Вид спереди"
+                            onclick="changeImage(this, 'main-img-porsche')">
+                        <img class="thumb" src="./static3/Porshe2.webp" alt="Вид сбоку"
+                            onclick="changeImage(this, 'main-img-porsche')">
+                        <img class="thumb" src="./static3/Porshe3.jpg" alt="Вид сзади"
+                            onclick="changeImage(this, 'main-img-porsche')">
+                        <img class="thumb" src="./static3/Porshe4.webp" alt="Интерьер"
+                            onclick="changeImage(this, 'main-img-porsche')">
+                        <img class="thumb" src="./static3/porshe5.jpg" alt="Двигатель"
+                            onclick="changeImage(this, 'main-img-porsche')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+
+
+                    <div class="description">
+                        <p><strong>Технические характеристики:</strong></p>
+                        <ul class="specs-list">
+                            <li><strong>Год выпуска:</strong> 2022</li>
+                            <li><strong>Пробег:</strong> 8 500 км</li>
+                            <li><strong>Двигатель:</strong> 4.0 л V8, би-турбо</li>
+                            <li><strong>Мощность:</strong> 550 л.с.</li>
+                            <li><strong>Привод:</strong> Полный</li>
+                            <li><strong>Коробка передач:</strong> 8-ступ. Tiptronic S</li>
+                            <li><strong>Разгон 0-100 км/ч:</strong> 3.9 сек</li>
+                            <li><strong>Цвет:</strong> GT серебро металлик</li>
+                            <li><strong>Салон:</strong> Черная кожа/карбон</li>
+                        </ul>
+
+                        <p>Porsche Cayenne Coupe Turbo — самый быстрый купеобразный SUV в линейке Porsche. Комплектация
+                            включает: Sport Chrono Package, адаптивную пневмоподвеску PASM, керамические тормоза PCCB,
+                            22" колеса RS Spyder Design, спортивную выхлопную систему. Салон с отделкой карбоном,
+                            спортивными сиденьями с памятью, панорамной крышей, системой Burmester 3D.</p>
+
+                        <p><strong>Особенности:</strong> Система помощи при вождении (InnoDrive), камеры кругового
+                            обзора, подогрев руля и сидений, вентиляция передних сидений, проекционный дисплей.</p>
+
+                        <p><strong>Состояние:</strong> Как новый, полная комплектация оригинальных документов. Гарантия
+                            Porsche до 2025 года.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Toyota RAV4 Adventure Plus -->
+    <section class="product-detail-section">
+        <div class="section-divider top-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">Toyota</span>
+                    <span class="title-bold">RAV4 Adventure Plus</span>
+                </h1>
+                >
+            </div>
+
+            <div class="product-grid">
+                <div class="gallery-container">
+                    <div class="main-image">
+                        <img id="main-img-toyota" src="./static3/Toyota.jpg"
+                            alt="Toyota RAV4 Adventure Plus - Главное фото" loading="lazy">
+                    </div>
+
+                    <div class="thumbnails">
+                        <img class="thumb active" src="./static3/Toyota.jpg" alt="Вид спереди"
+                            onclick="changeImage(this, 'main-img-toyota')">
+                        <img class="thumb" src="./static3/Toyota2.jpg" alt="Вид сбоку"
+                            onclick="changeImage(this, 'main-img-toyota')">
+                        <img class="thumb" src="./static3/Toyota3.jpg" alt="Вид сзади"
+                            onclick="changeImage(this, 'main-img-toyota')">
+                        <img class="thumb" src="./static3/Toyota4.jpg" alt="Интерьер"
+                            onclick="changeImage(this, 'main-img-toyota')">
+                        <img class="thumb" src="./static3/Toyota5.jpg" alt="Двигатель"
+                            onclick="changeImage(this, 'main-img-toyota')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+
+
+                    <div class="description">
+                        <p
+                            style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #000000;">
+                            <strong style="color: #333;">✓ ЭПТС получен</strong><br>
+                            <strong style="color: #333;">✓ Коммерческий утильсбор оплачен</strong>
+                        </p>
+
+                        <p><strong>Комплектация «Adventure Plus»:</strong></p>
+                        <ul class="specs-list">
+                            <li><strong>Антиблокировочная система (ABS)</strong></li>
+                            <li><strong>Система курсовой устойчивости</strong></li>
+                            <li><strong>Система помощи при экстренном торможении</strong></li>
+                            <li><strong>Датчики давления в шинах</strong></li>
+                            <li><strong>Подушки безопасности водителя и пассажира</strong></li>
+                            <li><strong>Центральный замок, круиз‑контроль</strong></li>
+                            <li><strong>Система автоматической парковки, контроль за полосой движения</strong></li>
+                            <li><strong>Электрическая регулировка сидений, электропривод зеркал</strong></li>
+                            <li><strong>Подогрев передних сидений, комбинированный салон (кожа/алькантара), передний
+                                    центральный подлокотник</strong></li>
+                            <li><strong>Навигация, медиасистема, мультируль, беспроводная зарядка</strong></li>
+                            <li><strong>Панорамная крыша, адаптивные фары, ДХО, автоматический корректор фар</strong>
+                            </li>
+                        </ul>
+
+                        <p>Toyota RAV4 Adventure Plus — кроссовер с полным набором современных технологий безопасности и
+                            комфорта. Автомобиль готов к эксплуатации, все необходимые документы оформлены.</p>
+
+                        <p><strong>Состояние:</strong> Новый автомобиль, полный пакет документов. Официальная гарантия
+                            Toyota. Доступен к осмотру в салоне TINT MASTERS в г. Кириши.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="product-detail-section">
+        <div class="section-divider top-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+
+        <div class="product-wrapper">
+            <div class="product-title">
+                <h1>
+                    <span class="title-light">Volkswagen</span>
+                    <span class="title-bold">Tiguan L</span>
+                </h1>
+            </div>
+
+            <div class="product-grid">
+                <div class="gallery-container">
+                    <div class="main-image">
+                        <img id="main-img-tiguan" src="./static3/Volkswagen.jpg"
+                            alt="Volkswagen Tiguan L - Главное фото" loading="lazy">
+                    </div>
+
+                    <div class="thumbnails">
+                        <img class="thumb active" src="./static3/Volkswagen.jpg" alt="Вид спереди"
+                            onclick="changeImage(this, 'main-img-tiguan')">
+                        <img class="thumb" src="./static3/Volkswagen2.jpg" alt="Вид сбоку"
+                            onclick="changeImage(this, 'main-img-tiguan')">
+                        <img class="thumb" src="./static3/Volkswagen3.jpg" alt="Вид сзади"
+                            onclick="changeImage(this, 'main-img-tiguan')">
+                        <img class="thumb" src="./static3/Volkswagen4.jpg" alt="Интерьер"
+                            onclick="changeImage(this, 'main-img-tiguan')">
+                        <img class="thumb" src="./static3/Volkswagen5.jpg" alt="Двигатель"
+                            onclick="changeImage(this, 'main-img-tiguan')">
+                    </div>
+                </div>
+
+                <div class="product-info">
+
+
+                    <div class="description">
+                        <p
+                            style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #007bff;">
+                            <strong style="color: #333;">✓ ЭПТС получен</strong><br>
+                            <strong style="color: #333;">✓ Коммерческий утильсбор оплачен</strong>
+                        </p>
+
+                        <p><strong>Комплектация «Tiguan L»:</strong></p>
+                        <ul class="specs-list">
+                            <li><strong>Антиблокировочная система (ABS)</strong></li>
+                            <li><strong>Система курсовой устойчивости</strong></li>
+                            <li><strong>Система помощи при экстренном торможении</strong></li>
+                            <li><strong>Датчики давления в шинах</strong></li>
+                            <li><strong>Подушки безопасности водителя и пассажира</strong></li>
+                            <li><strong>Центральный замок, круиз‑контроль</strong></li>
+                            <li><strong>Система автоматической парковки, контроль за полосой движения</strong></li>
+                            <li><strong>Электрическая регулировка сидений, электропривод зеркал</strong></li>
+                            <li><strong>Подогрев передних сидений, комбинированный салон (кожа/алькантара), передний
+                                    центральный подлокотник</strong></li>
+                            <li><strong>Навигация, медиасистема, мультируль, беспроводная зарядка</strong></li>
+                            <li><strong>Панорамная крыша, адаптивные фары, ДХО, автоматический корректор фар</strong>
+                            </li>
+                        </ul>
+
+                        <p>Volkswagen Tiguan L — просторный кроссовер с увеличенной колесной базой, предлагающий
+                            максимальный комфорт для водителя и пассажиров. Обновленный дизайн, современные технологии
+                            безопасности и богатое оснащение делают его одним из лидеров в своем классе.</p>
+
+                        <p><strong>Особенности Tiguan L:</strong> Увеличенное внутреннее пространство, высокое качество
+                            сборки, эргономичный салон с премиальными материалами, интеллектуальная мультимедиа система
+                            с большим сенсорным экраном.</p>
+
+                        <p><strong>Состояние:</strong> Новый автомобиль, полный пакет документов. Официальная гарантия
+                            Volkswagen. Автомобиль готов к регистрации и эксплуатации.</p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider bottom-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- JavaScript для смены изображений -->
+    <script>
+        function changeImage(thumb) {
+            // Находим контейнер галереи
+            const gallery = thumb.closest('.gallery-container');
+            if (!gallery) return;
+
+            // Основное изображение внутри этой галереи
+            const mainImg = gallery.querySelector('.main-image img');
+            if (mainImg) {
+                mainImg.src = thumb.src;
+            }
+
+            // Переключение active
+            gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        // Функция для открытия полноэкранного просмотра
+        function openFullscreen(imgElement) {
+            // Создаем контейнер для полноэкранного просмотра
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        cursor: pointer;
+    `;
+
+            // Создаем крестик для закрытия
+            const closeBtn = document.createElement('div');
+            closeBtn.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 10000;
+        transition: background 0.3s;
+    `;
+
+            // Добавляем крестик внутри
+            closeBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    `;
+
+            // Создаем контейнер для изображения с отступами
+            const imgContainer = document.createElement('div');
+            imgContainer.style.cssText = `
+    max-width: 1200px;    // Фиксированная максимальная ширина
+    max-height: 800px;    // Фиксированная максимальная высота
+    width: 90%;           // На мобильных - 90% экрана
+    height: auto;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+`;
+
+            // Создаем изображение для полноэкранного просмотра
+            const fullscreenImg = document.createElement('img');
+            fullscreenImg.src = imgElement.src;
+            fullscreenImg.alt = imgElement.alt;
+            fullscreenImg.style.cssText = `
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+        cursor: default;
+    `;
+
+            // Функция для закрытия
+            function closeFullscreen() {
+                document.body.removeChild(overlay);
+                document.body.style.overflow = 'auto'; // Возвращаем скролл
+            }
+
+            // Добавляем элементы
+            imgContainer.appendChild(fullscreenImg);
+            overlay.appendChild(imgContainer);
+            overlay.appendChild(closeBtn);
+            document.body.appendChild(overlay);
+
+            // Блокируем скролл страницы
+            document.body.style.overflow = 'hidden';
+
+            // Обработчики событий
+            closeBtn.addEventListener('click', function (e) {
+                e.stopPropagation(); // Останавливаем всплытие
+                closeFullscreen();
+            });
+
+            overlay.addEventListener('click', function (e) {
+                // Закрываем только при клике на фон (не на изображение и не на крестик)
+                if (e.target === overlay) {
+                    closeFullscreen();
+                }
+            });
+
+            // Закрытие по клавише ESC
+            document.addEventListener('keydown', function closeOnEsc(e) {
+                if (e.key === 'Escape') {
+                    closeFullscreen();
+                    // Удаляем обработчик после использования
+                    document.removeEventListener('keydown', closeOnEsc);
+                }
+            });
+        }
+
+        // Добавляем обработчики на все основные изображения
+        document.addEventListener('DOMContentLoaded', function () {
+            // Находим все основные изображения в галереях
+            const mainImages = document.querySelectorAll('.main-image img');
+
+            mainImages.forEach(img => {
+                // Добавляем курсор при наведении
+                img.style.cursor = 'zoom-in';
+
+                // Добавляем обработчик клика
+                img.addEventListener('click', function () {
+                    openFullscreen(this);
+                });
+            });
+        });
+    </script>
+    <style>
+        /* СЕКЦИЯ ПРОДУКТА */
+        .product-detail-section {
+            position: relative;
+            width: 100%;
+            padding: 120px 0;
+            background-color: #f3f3f3;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* РАЗДЕЛИТЕЛИ */
+        .section-divider.top-divider {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(0deg);
+            /* Для верха - без поворота */
+            z-index: 1;
+        }
+
+        .section-divider.bottom-divider {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            z-index: 1;
+        }
+
+        .section-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+
+        .divider-fill {
+            fill: #f8f9fa;
+        }
+
+        /* КОНТЕЙНЕР */
+        .product-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ЗАГОЛОВОК ПРОДУКТА */
+        .product-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .product-title h1 {
+            font-size: 52px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #333;
+        }
+
+        .title-light {
+            color: #999;
+            font-weight: 300;
+        }
+
+
+
+        /* ГРИД: ГАЛЕРЕЯ + ИНФО */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        /* ГАЛЕРЕЯ */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .main-image:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* МИНИАТЮРЫ — перенос на новую строку после 6 штук, без скролла */
+        .thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            /* ← разрешаем перенос на следующую строку */
+            justify-content: flex-start;
+            /* выравнивание слева */
+            gap: 15px;
+            max-width: 100%;
+            /* не вылезает за границы */
+            padding: 10px 0;
+            /* немного воздуха сверху/снизу */
+        }
+
+        /* Фиксируем размер миниатюр — они не растягиваются */
+        .thumb {
+            width: 100px;
+            height: 60px;
+            flex: 0 0 auto;
+            /* не растягиваются, сохраняют размер */
+            object-fit: cover;
+            border-radius: 4px;
+            /* можно оставить 0, если хочешь строго */
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* При наведении и active — чуть красивее */
+        .thumb:hover {
+            opacity: 1;
+            transform: scale(1.08);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border: 3px solid #222;
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Самое важное — основной блок с фото не должен "расти" из-за миниатюр */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Фиксируем пропорции основного изображения, чтобы высота не менялась */
+        .main-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.4s ease;
+            aspect-ratio: 3 / 2;
+            /* ← подбери под свои фото: 3/2, 4/3, 16/9, 5/4 и т.д. */
+            width: 100%;
+            background: #0a0a0a;
+            /* запасной фон, если фото не загрузилось */
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* cover → красиво заполняет без искажений */
+            object-position: center;
+            transition: transform 0.6s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.04);
+        }
+
+        /* ИНФОРМАЦИЯ О ПРОДУКТЕ */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 30px;
+        }
+
+
+
+
+
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .description p {
+            margin-bottom: 20px;
+        }
+
+
+
+
+
+        /* Стиль для текста под кнопкой */
+        .small-note {
+            margin-top: 10px;
+            color: rgba(0, 0, 0, 0.55);
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {}
+
+        /* Для светлого фона (в product-info) */
+        .product-info .small-note {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* АДАПТИВНОСТЬ */
+
+        /* ПЛАНШЕТЫ */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .product-title h1 {
+                font-size: 44px;
+            }
+
+
+
+            .thumbnails {
+                justify-content: center;
+            }
+        }
+
+        /* МОБИЛЬНЫЕ */
+        @media (max-width: 768px) {
+            .product-detail-section {
+                padding: 80px 0;
+            }
+
+            .product-title {
+                margin-bottom: 40px;
+            }
+
+            .product-title h1 {
+                font-size: 36px;
+                letter-spacing: 2px;
+            }
+
+            .thumb {
+                width: 80px;
+                height: 50px;
+            }
+
+
+
+            .description {
+                font-size: 15px;
+            }
+
+
+
+
+        }
+
+        /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
+        @media (max-width: 480px) {
+            .thumbnails {
+                gap: 10px;
+            }
+
+            .thumb {
+                width: 70px;
+                height: 45px;
+            }
+
+
+        }
+    </style>
+
+
+
+
+
+    <!-- КОНТАКТЫ + КАРТА -->
+    <section id="contacts" class="section section--dark reveal">
+        <div class="container">
+            <div class="sec-head">
+                <div class="sec-kicker">CONTACTS</div>
+                <h2 class="sec-title">Как нас найти</h2>
+                <p class="sec-sub">Запишитесь удобным способом — ответим быстро и подскажем лучший вариант.</p>
+            </div>
+
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="contact-row">
+                        <div class="contact-label">Телефон</div>
+                        <a class="contact-value" href="tel:+79319555009">8 (931) 955-50-09</a>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-label">Почта</div>
+                        <a class="contact-value" href="mailto:tintmasters47@yandex.ru">tintmasters47@yandex.ru</a>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-label">Адрес</div>
+                        <div class="contact-value">Кириши, проспект Победы, 33</div>
+                    </div>
+
+                    <div class="contact-row">
+                        <div class="contact-label">Часы работы</div>
+                        <div class="contact-value">
+                            Пн–Пт: 10:00–20:00<br>
+                            Вс: по записи
+                        </div>
+                    </div>
+
+                    <div class="contact-actions">
+                        <a class="cbtn cbtn--primary" href="#form">Задать вопрос</a>
+                        <a class="cbtn" href="tel:+79319555009">Позвонить</a>
+                        <a class="cbtn" target="_blank" href="https://yandex.ru/maps/">Маршрут</a>
+                    </div>
+
+
+                </div>
+
+                <div class="map-card">
+                    <!-- Вставь сюда iframe карты (Яндекс/Google/2ГИС). Это заглушка. -->
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?um=constructor%3A4cd0efb5db2f6d3b6871fe1e7adf350610385e0592f680a6e86d6a1855d10b58&amp;source=constructor"
+                        width="800" height="500" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- СТИЛЬНАЯ ФОРМА (вопрос/запись) -->
+    <section id="form" class="section section--dark section--cta reveal">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-left">
+                    <div class="sec-kicker">REQUEST</div>
+                    <h2 class="sec-title">Запись и вопросы</h2>
+                    <p class="sec-sub">
+                        Оставьте заявку — мы уточним детали, подберём решение и назовём стоимость.
+                        Обычно отвечаем быстро в рабочее время.
+                    </p>
+
+                    <div class="cta-points">
+                        <div class="cta-point">
+                            <span class="dot"></span> Бесплатная консультация
+                        </div>
+                        <div class="cta-point">
+                            <span class="dot"></span> Подбор материалов под задачу
+                        </div>
+                        <div class="cta-point">
+                            <span class="dot"></span> Рекомендации по уходу после работ
+                        </div>
+                    </div>
+                </div>
+
+                <form class="cta-form" action="#" method="post">
+                    <div class="field">
+                        <label>Имя</label>
+                        <input type="text" name="name" placeholder="Как к вам обращаться" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Телефон</label>
+                        <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Услуга</label>
+                        <select name="service" required>
+                            <option value="" disabled selected>Выберите услугу</option>
+                            <option>Защита кузова</option>
+                            <option>Техническое обслуживание</option>
+                            <option>Уход за кузовом</option>
+                            <option>Уход за салоном</option>
+                            <option>Автостёкла</option>
+                            <option>Мототехника</option>
+                            <option>Подарочные сертификаты</option>
+                            <option>Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Комментарий</label>
+                        <textarea name="message" rows="4" placeholder="Марка авто, год, что хотите сделать"></textarea>
+                    </div>
+
+                    <label class="agree">
+                        <input type="checkbox" required>
+                        <span>Согласен на обработку персональных данных</span>
+                    </label>
+
+                    <button class="submit" type="submit">
+                        Отправить заявку <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <div class="small">
+                        Нажимая “Отправить”, вы соглашаетесь с политикой обработки данных.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Уведомление об отправке -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+        <div class="toast__icon">✓</div>
+        <div class="toast__text">
+            <div class="toast__title">Заявка отправлена</div>
+            <div class="toast__desc">Мы свяжемся с вами в ближайшее время.</div>
+        </div>
+        <button class="toast__close" id="toastClose" type="button" aria-label="Закрыть">×</button>
+    </div>
+
+
+
+
+
+    <!-- Footer (Низ страницы) -->
+    <footer class="footer">
+        <div class="footer-wave"></div>
+
+        <div class="footer-container">
+            <!-- LEFT -->
+            <div class="footer-col">
+                <div class="logo">TINT<br><span>DETAILING</span></div>
+
+                <p class="footer-text">
+                    Кириши, проспект Победы, 33<br>
+                    8 (931) 955-50-09<br>
+                    tintmasters47@yandex.ru
+                </p>
+
+                <a href="#contacts" class="footer-btn">СВЯЗАТЬСЯ</a>
+            </div>
+
+            <!-- CENTER -->
+            <div class="footer-col">
+                <h4></h4>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#works">Наши работы</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#process">Процесс работы</a></li>
+                    <li><a href="#contacts">Как нас найти</a></li>
+                    <li><a href="#form">Записаться</a></li>
+                    <li><a href="/index-Avto.html">Заказать авто</a></li>
+
+                </ul>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="footer-col">
+                <h4>КОНТАКТЫ</h4>
+
+                <div class="socials">
+                    <a href="https://vk.com/tint_ms" target="_blank">
+                        <i class="fa-brands fa-vk"></i>
+                    </a>
+
+                    <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="https://youtube.com/yourpage" target="_blank">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            est. 2013 Tint Master Detailing Studio
+        </div>
+    </footer>
+
+
+    <!-- =========================
+     HEADER: эффект при скролле
+     Добавляет класс .is-scrolled,
+     когда страница прокручена вниз
+========================= -->
+    <script>
+        const header = document.querySelector('.site-header');
+
+        window.addEventListener(
+            'scroll',
+            () => {
+                header.classList.toggle('is-scrolled', window.scrollY > 10);
+            },
+            { passive: true }
+        );
+    </script>
+
+
+
+
+
+    <!-- =========================
+     ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
+     Desktop + Mobile
+     с учётом высоты header
+========================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.site-header');
+            const headerHeight = header ? header.offsetHeight : 0;
+
+            const menuLinks = document.querySelectorAll(
+                '.nav-link[href^="#"], .mobile-nav__link[href^="#"]'
+            );
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    const targetId = link.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+
+                    const target = document.querySelector(targetId);
+                    if (!target) return;
+
+                    e.preventDefault();
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.pageYOffset -
+                        headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // закрываем мобильное меню
+                    document.body.classList.remove('no-scroll');
+                    document.querySelector('.site-header')?.classList.remove('menu-open');
+                    document.getElementById('navOverlay')?.setAttribute('hidden', '');
+                });
+            });
+        });
+    </script>
+
+
+    <!-- =========================
+     FORM SUBMIT
+     Показ уведомления (toast)
+     и очистка формы
+========================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('#form form.cta-form');
+            const toast = document.getElementById('toast');
+            const toastClose = document.getElementById('toastClose');
+
+            if (!form || !toast || !toastClose) return;
+
+            let toastTimer = null;
+
+            // показать уведомление
+            function showToast() {
+                toast.classList.add('is-show');
+                toast.setAttribute('aria-hidden', 'false');
+
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(hideToast, 4000);
+            }
+
+            // скрыть уведомление
+            function hideToast() {
+                toast.classList.remove('is-show');
+                toast.setAttribute('aria-hidden', 'true');
+            }
+
+            toastClose.addEventListener('click', hideToast);
+
+            // отправка формы
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // отменяем реальную отправку
+
+                // здесь позже можно добавить fetch / ajax
+
+                showToast();   // показываем уведомление
+                form.reset();  // очищаем поля
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

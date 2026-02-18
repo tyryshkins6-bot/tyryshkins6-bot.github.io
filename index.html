@@ -1,0 +1,1360 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TINT MASTERS - Детейлинг автомобилей</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon (иконка сайта) -->
+  <link rel="icon" href="./Logo-Tint.png" type="image/png">
+  <link rel="stylesheet" href="./static/style.css">
+  <script src="./static/burger.js" defer></script>
+
+
+  <!-- Стиль хэдера (Inter + Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/index.html">
+        <img src="./Logo-Tint.png" alt="TINT MASTERS Logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">TINT MASTERS</div>
+          <div class="brand-sub">Детейлинг студия</div>
+        </div>
+      </a>
+
+      <!-- Десктоп меню -->
+      <nav class="nav" aria-label="Главная навигация">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#about">О нас</a></li>
+          <li><a class="nav-link" href="#works">Наши работы</a></li>
+          <li><a class="nav-link" href="#services">Услуги</a></li>
+          <li><a class="nav-link" href="#process">Процесс работы</a></li>
+          <li><a class="nav-link" href="#contacts">Как нас найти</a></li>
+          <li><a class="nav-link" href="#form">Записаться</a></li>
+          <li><a class="nav-link" href="/index-Avto.html">Заказать Авто</a></li>
+        </ul>
+      </nav>
+
+      <!-- Бургер справа -->
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="header-contacts">
+        <a href="tel:89319555009" class="header-phone">
+          8&nbsp;(931)&nbsp;955-50-09
+        </a>
+
+        <div class="header-socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Затемнение -->
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+
+    <!-- Мобильное меню (выезжает справа) -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" aria-hidden="true">
+      <div class="mobile-nav__top">
+        <div class="mobile-nav__title">МЕНЮ</div>
+        <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+      </div>
+
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#about">О нас</a></li>
+        <li><a class="mobile-nav__link" href="#works">Наши работы</a></li>
+        <li><a class="mobile-nav__link" href="#services">Услуги</a></li>
+        <li><a class="mobile-nav__link" href="#process">Процесс работы</a></li>
+        <li><a class="mobile-nav__link" href="#contacts">Как нас найти</a></li>
+        <li><a class="mobile-nav__link" href="#form">Записаться</a></li>
+        <li><a class="mobile-nav__link" href="/index-Avto.html">Заказать Авто</a></li>
+      </ul>
+
+      <!-- CONTACTS (внизу бургера) -->
+      <div class="mobile-nav__contacts">
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Телефон</span>
+          <a href="tel:+79319555009" class="mobile-contact__value">
+            8 (931) 955-50-09
+          </a>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Адрес</span>
+          <span class="mobile-contact__value">
+            Кириши<br>
+            ул. проспект Победы, 33
+          </span>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Время работы</span>
+          <span class="mobile-contact__value">
+            Пн–Пт 10:00–20:00<br>
+            Вс — по записи
+          </span>
+        </div>
+      </div>
+
+      <div class="mobile-nav__socials">
+        <a href="https://vk.com/tint_ms" target="_blank" aria-label="VK">
+          <i class="fa-brands fa-vk"></i>
+        </a>
+
+        <a href="https://instagram.com/tint_masters_kirishi" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://youtube.com/yourpage" target="_blank" aria-label="Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section (Главный баннер с видео) -->
+  <section class="hero">
+    <video autoplay muted loop id="hero-video">
+      <source src="./IMG_1879.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <h2>Профессиональный детейлинг для вашего автомобиля</h2>
+      <p>Мы знаем, как важно, чтобы ваш автомобиль выглядел идеально</p>
+    </div>
+  </section>
+  <!-- <section class="after-hero"></section> -->
+
+
+
+
+  <!-- О нас -->
+  <section id="about" class="about about--premium">
+    <div class="elementor-background-overlay" bis_skin_checked="1"></div>
+    <div class="container about__grid">
+
+      <div class="about__content">
+        <div class="about__kicker">TINT MASTERS</div>
+
+        <h2 class="about__title">О нашей студии</h2>
+
+        <p class="about__lead">
+          Добро пожаловать в TINT MASTERS – место, где автомобили преображаются,
+          получают защиту и безупречный уход.
+        </p>
+
+        <h3 class="about__subtitle">Почему выбирают нас:</h3>
+
+        <ul class="about__list">
+          <li><strong>Индивидуальный подход</strong> — подбираем решение под ваш автомобиль и стиль.</li>
+          <li><strong>Премиум-материалы</strong> — плёнки, керамика и технологии, проверенные временем.</li>
+          <li><strong>Команда мастеров</strong> — аккуратность, контроль качества и гарантия результата.</li>
+          <li>
+            <strong>Широкий спектр услуг</strong>:
+            <ul class="about__sublist">
+              <li>Оклейка полиуретановой плёнкой</li>
+              <li>Премиальная тонировка</li>
+              <li>Керамическое покрытие</li>
+              <li>Шиномонтаж и обслуживание</li>
+              <li>Комплексный детейлинг</li>
+            </ul>
+          </li>
+          <li><strong>Клиенты на первом месте</strong> — прозрачно, аккуратно и в срок.</li>
+        </ul>
+
+        <p class="about__note">
+          Доверив нам автомобиль, вы получаете уверенность, что он будет выглядеть идеально долгое время.
+        </p>
+
+        <p class="about__est">est. 2013 Tint Master Detailing Studio</p>
+      </div>
+
+
+
+    </div>
+  </section>
+
+
+  <!-- НАШИ РАБОТЫ -->
+  <section id="works" class="section section--dark reveal works-full">
+
+    <!-- Заголовок ОСТАЁТСЯ по сетке -->
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-kicker">PORTFOLIO</div>
+        <h2 class="sec-title">Наши работы</h2>
+        <p class="sec-sub">
+          Несколько примеров выполненных проектов: тонировка, плёнка, полировка и защита.
+        </p>
+      </div>
+    </div>
+
+    <!-- СЛАЙДЕР НА ВСЮ ШИРИНУ ЭКРАНА -->
+    <div class="works-wrap works-wrap--full">
+
+      <!-- стрелка влево -->
+      <button class="works-arrow works-arrow--prev" type="button" aria-label="Назад">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <!-- viewport -->
+      <div class="works-viewport" id="worksViewport" tabindex="0">
+
+        <!-- track -->
+        <div class="works-grid works-track">
+
+          <!-- CARD 1 -->
+          <a class="work-card">
+            <img src="./static/Antigravi.jpg" alt="Антигравийная защита">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">PPF / Плёнка</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Антигравийная защита</div>
+              <div class="work-meta">Капот • Бампер • Крылья</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 2 -->
+          <a class="work-card">
+            <!-- Контейнер для двух изображений -->
+            <div class="image-container">
+              <img class="before-image active" src="./static/aada71aef0569eef1c0f0f4d974cc24e78ed96431.png"
+                alt="Мойка подкапотного пространства ДО">
+              <img class="after-image" src="./static/aada71aef0569eef1c0f0f4d974cc24e78ed9643.png"
+                alt="Мойка подкапотного пространства ПОСЛЕ">
+            </div>
+
+            <!-- Наложение с текстом -->
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">TINT / Мойка</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Мойка подкапотного пространства</div>
+              <div class="work-meta">Чистота • Производительность</div>
+            </div>
+
+            <!-- Метки ДО/ПОСЛЕ -->
+            <div class="before-after-labels">
+              <span class="label before-label">ДО</span>
+              <span class="label after-label">ПОСЛЕ</span>
+            </div>
+
+            <span class="shine"></span>
+          </a>
+
+
+          <!-- CARD 3 -->
+          <a class="work-card">
+            <img src="./static/Alcantara-upholstery.jpg" alt="Керамика">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">INTERIOR</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Перетяжка потолка в алькантару</div>
+              <div class="work-meta">Эстетика • Качество</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 4 -->
+          <a class="work-card">
+            <img src="./static/Polishing.jpg" alt="Керамика">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">DETAILING</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Полировочный комплекс "Профи"</div>
+              <div class="work-meta">Лак • Гидрофобный слой</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+
+          <!-- CARD 5 -->
+          <a class="work-card">
+            <!-- Контейнер для двух изображений -->
+            <div class="image-container">
+              <img class="before-image active" src="./static/headlights.jpg" alt="Восстановление фар ДО">
+              <img class="after-image" src="./static/headlights2.jpg" alt="Восстановление фар ПОСЛЕ">
+            </div>
+
+            <!-- Наложение с текстом -->
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">DETAILING</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Восстановление фар</div>
+              <div class="work-meta">Полировка • Блеск</div>
+            </div>
+
+            <!-- Метки ДО/ПОСЛЕ -->
+            <div class="before-after-labels">
+              <span class="label before-label">ДО</span>
+              <span class="label after-label">ПОСЛЕ</span>
+            </div>
+
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 6 -->
+          <a class="work-card">
+            <img src="./static/Lada-matovi.jpg" alt="Керамика">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">DETAILING</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Оклейка кузова в матовую пленку</div>
+              <div class="work-meta">Матовый • Защита</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 7 -->
+          <a class="work-card">
+            <img src="./static/Noise-insulation.jpg" alt="Керамика">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">DETAILING</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Шумоизоляция салона</div>
+              <div class="work-meta">Тишина • Комфорт</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 8 -->
+          <a class="work-card">
+            <!-- Контейнер для двух изображений -->
+            <div class="image-container">
+              <img class="before-image active" src="./static/Restoration2.jpg" alt="Реставрация кожаных элементов ДО">
+              <img class="after-image" src="./static/Restoration.jpg" alt="Реставрация кожаных элементов ПОСЛЕ">
+            </div>
+
+            <!-- Наложение с текстом -->
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">INTERIOR</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Реставрация интерьера</div>
+              <div class="work-meta">Чистота • Качество</div>
+            </div>
+
+            <!-- Метки ДО/ПОСЛЕ -->
+            <div class="before-after-labels">
+              <span class="label before-label">ДО</span>
+              <span class="label after-label">ПОСЛЕ</span>
+            </div>
+
+            <span class="shine"></span>
+          </a>
+
+          <!-- CARD 9 -->
+          <a class="work-card">
+            <img src="./static/Porsche.jpg" alt="Керамика">
+            <div class="work-overlay">
+              <div class="work-top">
+                <div class="work-tag">DETAILING</div>
+                <div class="work-year">2025</div>
+              </div>
+              <div class="work-title">Защита цветной полиуретановой пленкой</div>
+              <div class="work-meta">Стиль • Персонализация</div>
+            </div>
+            <span class="shine"></span>
+          </a>
+
+
+        </div>
+      </div>
+
+      <!-- стрелка вправо -->
+      <button class="works-arrow works-arrow--next" type="button" aria-label="Вперёд">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+    </div>
+  </section>
+
+
+
+  <!-- Модальное окно для просмотра картинок -->
+  <div id="imageModal" class="image-modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <button class="modal-close">&times;</button>
+      <div class="modal-image-wrapper">
+        <img class="modal-image" src="" alt="">
+      </div>
+      <div class="modal-info">
+        <h3 class="modal-title"></h3>
+        <p class="modal-description"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Услуги -->
+  <section class="servicesV2" id="services">
+    <div class="servicesV2__head">
+      <div class="sec-kicker">SERVICES</div>
+      <div class="servicesV2__headInner">
+        <h2 class="servicesV2__title">НАШИ<br>УСЛУГИ</h2>
+        <p class="servicesV2__lead">
+          Наш сервис предоставляет широкий спектр услуг по защите, уходу и восстановлению автомобиля.
+          Работаем аккуратно, с качественными материалами и вниманием к деталям.
+        </p>
+      </div>
+    </div>
+
+    <div class="servicesV2__list">
+
+      <article class="svc">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/1back.webp" alt="Антигравийная защита">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Защита кузова</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Антигравийная защита фар</span>
+              <span class="svc-service-item">Оклейка кузова в матовую пленку</span>
+              <span class="svc-service-item">Защита цветной полиуретановой пленкой</span>
+              <span class="svc-service-item">Полная защита кузова антигравийной пленкой</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">PPF / Vinyl</span>
+              <a href="/index-service.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="svc svc--rev">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/2back.jpg" alt="Техническое обслуживание">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Техническое обслуживание</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Компьютерная диагностика Launch</span>
+              <span class="svc-service-item">Техническое обслуживание авто</span>
+              <span class="svc-service-item">Шиномонтаж</span>
+              <span class="svc-service-item">Мойка подкапотного пространства и радиаторов</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">Диагностика</span>
+              <a href="/index-service2.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+
+      <article class="svc">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/3back.jpg" alt="Уход за кузовом">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Уход за кузовом</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Шлифовка и восстановление фар</span>
+              <span class="svc-service-item">Детейлинг мойка с обезжириванием</span>
+              <span class="svc-service-item">Полировочный комплекс "Блеск"</span>
+              <span class="svc-service-item">Полировочный комплекс "Профи"</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">Полировка / Керамика</span>
+              <a href="/index-service3.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="svc svc--rev">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/4back.jpeg" alt="Уход за салоном">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Уход за салоном</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Перетяжка в оригинальную алькантару</span>
+              <span class="svc-service-item">Защита кожаных элементов салона</span>
+              <span class="svc-service-item">Химчистка интерьера</span>
+              <span class="svc-service-item">Реставрация кожаных элементов</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">Химчистка</span>
+              <a href="/index-service4.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="svc">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/5back.jpg" alt="Автостёкла">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Автостёкла</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Антидождь</span>
+              <span class="svc-service-item">Замена стекол автомобиля</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">Антидождь</span>
+              <a href="/index-service5.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="svc svc--rev">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/6back.jpg" alt="Мототехника">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Мототехника</h3>
+            <div class="svc__services">
+              <span class="svc-service-item">Комплексная мойка мототехники</span>
+              <span class="svc-service-item">Полировка и защита покрытия</span>
+              <span class="svc-service-item">Техническое обслуживание</span>
+              <span class="svc-service-item">Химчистка</span>
+            </div>
+            <div class="svc__meta">
+              <span class="svc__tag">Moto detailing</span>
+              <a href="/index-service6.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+      <article class="svc">
+        <div class="svc__card">
+          <div class="svc__media">
+            <img src="./static/7back.jpg" alt="Подарочные сертификаты">
+          </div>
+          <div class="svc__body">
+            <h3 class="svc__name">Подарочные сертификаты</h3>
+            <p class="svc__desc">
+              Подарочные сертификаты от Tint Masters – это идеальный подарок для тех, кто ценит чистоту, комфорт и
+              безупречный вид автомобиля.
+            </p>
+            <div class="svc__meta">
+              <span class="svc__tag">Gift</span>
+              <a href="/index-service7.html" class="box">
+                <div class="arrow right"></div>
+                <div class="text">Подробнее</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+    </div>
+  </section>
+
+
+  <!-- ПРОЦЕСС РАБОТЫ -->
+  <section id="process" class="section section--dark reveal">
+    <div class="container">
+      <!-- Декоративный на фоне  -->
+      <div class="process-bg-logo" aria-hidden="true">
+        <img src="./static/car-disk-brake.png" alt="" width="250" height="250" loading="lazy">
+      </div>
+
+      <div class="sec-head">
+        <div class="sec-kicker">HOW IT WORKS</div>
+        <h2 class="sec-title">Процесс работы</h2>
+        <p class="sec-sub">Всё прозрачно и по шагам — вы понимаем, что делаем и зачем.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Осмотр и консультация</h3>
+          <p class="step-text">
+            Оцениваем состояние кузова/стёкол, обсуждаем цели и подбираем оптимальные материалы.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Подготовка</h3>
+          <p class="step-text">
+            Детальная мойка, обезжиривание, очистка поверхности. Подготовка — залог идеального результата.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Выполнение работ</h3>
+          <p class="step-text">
+            Работаем аккуратно и без спешки: точные подрезы, правильные режимы, контроль каждого этапа.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Выдача и рекомендации</h3>
+          <p class="step-text">
+            Проверяем качество, даём рекомендации по уходу и сроки первой мойки/эксплуатации.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <style>
+    .section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      z-index: 2;
+    }
+
+    /* Декоративный логотип на фоне - для изображения */
+    .process-bg-logo {
+      position: absolute;
+      left: 0px;
+      top: 22%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 1;
+      width: 180px;
+      height: 250px;
+      opacity: 0.6;
+      /* Начальная прозрачность */
+      transition: opacity 0.3s ease;
+      animation: float 6s ease-in-out infinite;  /* ← добавил анимацию */
+      filter: brightness(0.8) contrast(1.2) blur(1.5px);  /* ← добавил блюр 3px */
+    }
+
+    /* Стили для изображения внутри */
+    .process-bg-logo img {
+      /* width: 100%; */
+      height: 100%;
+      object-fit: contain;
+      /* Сохраняет пропорции */
+      filter: brightness(0.8) contrast(1.2);
+      /* Можно настроить */
+    }
+
+    /* Для тёмной темы */
+    .section--dark .process-bg-logo img {
+      filter: brightness(1.2) contrast(1.1);
+      /* Светлее на тёмном фоне */
+    }
+
+    /* Для светлой темы */
+    .section--light .process-bg-logo img {
+      filter: brightness(0.6) contrast(1.2);
+      /* Темнее на светлом фоне */
+      opacity: 0.1;
+    }
+
+    /* Мобильная версия */
+    @media (max-width: 768px) {
+      .process-bg-logo {
+        left: -100px;
+        width: 20px;
+        height: 125px;
+        opacity: 0.6;
+        top: 7%;
+        animation: float 5s ease-in-out infinite;
+        /* ← чуть быстрее на мобилках */
+      }
+    }
+
+    /* Анимация плавания вверх-вниз */
+    @keyframes float {
+      0% {
+        transform: translateY(-50%) translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-50%) translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(-50%) translateY(0px);
+      }
+    }
+  </style>
+
+
+
+
+
+  <!-- FAQ -->
+  <section id="faq" class="section section--dark reveal">
+    <!-- Декоративный на фоне  -->
+      <div class="process-bg-logo1" aria-hidden="true">
+        <img src="./static2/Logo3D.png" alt="" width="250" height="250" loading="lazy">
+      </div>
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-kicker">FAQ</div>
+        <h2 class="sec-title">Вопросы и ответы</h2>
+        <p class="sec-sub">Коротко отвечаем на самое популярное — профессионально и по делу.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary class="faq-q">Сколько держится керамическое покрытие?</summary>
+          <div class="faq-a">
+            Срок зависит от состава, подготовки поверхности и ухода. В среднем качественная керамика служит
+            от 12 до 36 месяцев. Мы подбираем состав под ваш режим эксплуатации и обязательно даём
+            рекомендации
+            по мойке и поддерживающим составам.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Когда можно мыть автомобиль после плёнки или керамики?</summary>
+          <div class="faq-a">
+            После оклейки плёнкой обычно рекомендуем выдержать 3–7 дней без агрессивных моек (в зависимости
+            от условий).
+            После нанесения керамики — первую мойку лучше делать через 7 дней. Точные сроки подскажем после
+            работ,
+            исходя из материалов и температуры.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Полировка безопасна для лака?</summary>
+          <div class="faq-a">
+            Да, при правильной диагностике и подборе абразивности. Мы измеряем толщину ЛКП, подбираем связку
+            паст/кругов
+            и снимаем только необходимый слой для восстановления блеска и удаления дефектов.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Сколько времени занимает комплекс работ?</summary>
+          <div class="faq-a">
+            В среднем: тонировка — от 1.5 до 3 часов, полировка — от 1 дня, керамика — от 1 до 2 дней,
+            оклейка полиуретаном — от 1 до 4 дней (зависит от зоны). Срок назовём после осмотра и
+            согласования пакета.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+<style>
+    .section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      z-index: 2;
+    }
+
+    /* Декоративный логотип на фоне - для изображения */
+    .process-bg-logo1 {
+      position: absolute;
+      right: 75px;
+      top: 22%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 1;
+      width: 180px;
+      height: 250px;
+      opacity: 0.6;
+      /* Начальная прозрачность */
+      transition: opacity 0.3s ease;
+      animation: float 6s ease-in-out infinite;  /* ← добавил анимацию */
+      filter: brightness(0.8) contrast(1.2) blur(1.5px);  /* ← добавил блюр 3px */
+    }
+
+    /* Стили для изображения внутри */
+    .process-bg-logo img {
+      /* width: 100%; */
+      height: 100%;
+      object-fit: contain;
+      /* Сохраняет пропорции */
+      filter: brightness(0.8) contrast(1.2);
+      /* Можно настроить */
+    }
+
+    /* Для тёмной темы */
+    .section--dark .process-bg-logo img {
+      filter: brightness(1.2) contrast(1.1);
+      /* Светлее на тёмном фоне */
+    }
+
+    /* Для светлой темы */
+    .section--light .process-bg-logo img {
+      filter: brightness(0.6) contrast(1.2);
+      /* Темнее на светлом фоне */
+      opacity: 0.1;
+    }
+
+    /* Мобильная версия */
+    @media (max-width: 768px) {
+      .process-bg-logo {
+        left: -100px;
+        width: 20px;
+        height: 125px;
+        opacity: 0.6;
+        top: 7%;
+        animation: float 5s ease-in-out infinite;
+        /* ← чуть быстрее на мобилках */
+      }
+    }
+
+    /* Анимация плавания вверх-вниз */
+    @keyframes float {
+      0% {
+        transform: translateY(-50%) translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-50%) translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(-50%) translateY(0px);
+      }
+    }
+  </style>
+
+
+
+  <section class="photo-strip"></section>
+
+  <!-- КОНТАКТЫ + КАРТА -->
+  <section id="contacts" class="section section--dark reveal">
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-kicker">CONTACTS</div>
+        <h2 class="sec-title">Как нас найти</h2>
+        <p class="sec-sub">Запишитесь удобным способом — ответим быстро и подскажем лучший вариант.</p>
+      </div>
+
+      <div class="contacts-grid">
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-label">Телефон</div>
+            <a class="contact-value" href="tel:+79319555009">8 (931) 955-50-09</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Почта</div>
+            <a class="contact-value" href="mailto:tintmasters47@yandex.ru">tintmasters47@yandex.ru</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Адрес</div>
+            <div class="contact-value">Кириши, проспект Победы, 33</div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Часы работы</div>
+            <div class="contact-value">
+              Пн–Пт: 10:00–20:00<br>
+              Вс: по записи
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="cbtn cbtn--primary" href="#form">Задать вопрос</a>
+            <a class="cbtn" href="tel:+79319555009">Позвонить</a>
+            <a class="cbtn" target="_blank" href="https://yandex.ru/maps/">Маршрут</a>
+          </div>
+
+
+        </div>
+
+        <div class="map-card">
+          <!-- Вставь сюда iframe карты (Яндекс/Google/2ГИС). Это заглушка. -->
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A4cd0efb5db2f6d3b6871fe1e7adf350610385e0592f680a6e86d6a1855d10b58&amp;source=constructor"
+            width="800" height="500" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- СТИЛЬНАЯ ФОРМА (вопрос/запись) -->
+  <section id="form" class="section section--dark section--cta reveal">
+    <div class="container">
+      <div class="cta-grid">
+        <div class="cta-left">
+          <div class="sec-kicker">REQUEST</div>
+          <h2 class="sec-title">Запись и вопросы</h2>
+          <p class="sec-sub">
+            Оставьте заявку — мы уточним детали, подберём решение и назовём стоимость.
+            Обычно отвечаем быстро в рабочее время.
+          </p>
+
+          <div class="cta-points">
+            <div class="cta-point">
+              <span class="dot"></span> Бесплатная консультация
+            </div>
+            <div class="cta-point">
+              <span class="dot"></span> Подбор материалов под задачу
+            </div>
+            <div class="cta-point">
+              <span class="dot"></span> Рекомендации по уходу после работ
+            </div>
+          </div>
+        </div>
+
+        <form class="cta-form" action="#" method="post">
+          <div class="field">
+            <label>Имя</label>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+
+          <div class="field">
+            <label>Телефон</label>
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+
+          <div class="field">
+            <label>Услуга</label>
+            <select name="service" required>
+              <option value="" disabled selected>Выберите услугу</option>
+              <option>Защита кузова</option>
+              <option>Техническое обслуживание</option>
+              <option>Уход за кузовом</option>
+              <option>Уход за салоном</option>
+              <option>Автостёкла</option>
+              <option>Мототехника</option>
+              <option>Подарочные сертификаты</option>
+              <option>Другое</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Комментарий</label>
+            <textarea name="message" rows="4" placeholder="Марка авто, год, что хотите сделать"></textarea>
+          </div>
+
+          <label class="agree">
+            <input type="checkbox" required>
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+
+          <button class="submit" type="submit">
+            Отправить заявку <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="small">
+            Нажимая “Отправить”, вы соглашаетесь с политикой обработки данных.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Уведомление об отправке -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+    <div class="toast__icon">✓</div>
+    <div class="toast__text">
+      <div class="toast__title">Заявка отправлена</div>
+      <div class="toast__desc">Мы свяжемся с вами в ближайшее время.</div>
+    </div>
+    <button class="toast__close" id="toastClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+
+
+
+
+
+  <!-- Footer (Низ страницы) -->
+  <footer class="footer">
+    <div class="footer-wave"></div>
+
+    <div class="footer-container">
+      <!-- LEFT -->
+      <div class="footer-col">
+        <div class="logo">TINT<br><span>DETAILING</span></div>
+
+        <p class="footer-text">
+          Кириши, проспект Победы, 33<br>
+          8 (931) 955-50-09<br>
+          tintmasters47@yandex.ru
+        </p>
+
+        <a href="#contacts" class="footer-btn">СВЯЗАТЬСЯ</a>
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-col">
+        <h4></h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#works">Наши работы</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#process">Процесс работы</a></li>
+          <li><a href="#contacts">Как нас найти</a></li>
+          <li><a href="#form">Записаться</a></li>
+          <li><a href="/index-Avto.html">Заказать авто</a></li>
+
+        </ul>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="footer-col">
+        <h4>КОНТАКТЫ</h4>
+
+        <div class="socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      est. 2013 Tint Master Detailing Studio
+    </div>
+  </footer>
+
+
+  <!-- =========================
+     HEADER: эффект при скролле
+     Добавляет класс .is-scrolled,
+     когда страница прокручена вниз
+========================= -->
+  <script>
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 10);
+      },
+      { passive: true }
+    );
+  </script>
+
+
+  <!-- =========================
+     WORKS SLIDER
+     Слайдер "Наши работы":
+     - стрелки
+     - drag мышью / тач
+     - пауза при hover
+========================= -->
+  <script>
+    (() => {
+      const viewport = document.getElementById('worksViewport');
+      if (!viewport) return;
+
+      const track = viewport.querySelector('.works-track');
+      const prev = viewport.parentElement.querySelector('.works-arrow--prev');
+      const next = viewport.parentElement.querySelector('.works-arrow--next');
+
+      // === шаг прокрутки (ширина карточки + gap)
+      const getStep = () => {
+        const card = track.querySelector('.work-card');
+        if (!card) return 320;
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0);
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      // прокрутка на один шаг влево / вправо
+      const scrollByStep = (dir) => {
+        const step = getStep();
+        const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+        // Если достигнут конец, вернуться к началу (или наоборот)
+        if (dir > 0 && track.scrollLeft >= maxScrollLeft) {
+          track.scrollLeft = 0;
+        } else if (dir < 0 && track.scrollLeft <= 0) {
+          track.scrollLeft = maxScrollLeft;
+        } else {
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        }
+      };
+
+      prev?.addEventListener('click', () => scrollByStep(-1));
+      next?.addEventListener('click', () => scrollByStep(1));
+
+      /* ---------- DRAG (мышь / тач) ---------- */
+      let isDown = false;
+      let startX = 0;
+      let startLeft = 0;
+
+      const onDown = (clientX) => {
+        isDown = true;
+        viewport.classList.add('is-dragging');
+        startX = clientX;
+        startLeft = track.scrollLeft;
+      };
+
+      const onMove = (clientX) => {
+        if (!isDown) return;
+        const dx = clientX - startX;
+        track.scrollLeft = startLeft - dx;
+      };
+
+      const onUp = () => {
+        if (!isDown) return;
+        isDown = false;
+        viewport.classList.remove('is-dragging');
+
+        // snap к ближайшей карточке
+        const step = getStep();
+        const nearest = Math.round(track.scrollLeft / step) * step;
+        track.scrollTo({ left: nearest, behavior: 'smooth' });
+      };
+
+      viewport.addEventListener('mousedown', (e) => onDown(e.clientX));
+      window.addEventListener('mousemove', (e) => onMove(e.clientX));
+      window.addEventListener('mouseup', onUp);
+
+      viewport.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), { passive: true });
+      viewport.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
+      viewport.addEventListener('touchend', onUp);
+
+      // клавиатура (стрелки)
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') scrollByStep(-1);
+        if (e.key === 'ArrowRight') scrollByStep(1);
+      });
+
+      // Добавляем обработчик клика для карточки, чтобы переключать изображения и метки
+      const workCards = document.querySelectorAll('.work-card');
+      workCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const beforeImage = card.querySelector('.before-image');
+          const afterImage = card.querySelector('.after-image');
+          const beforeLabel = card.querySelector('.before-label');
+          const afterLabel = card.querySelector('.after-label');
+
+          // Переключаем видимость изображений
+          if (beforeImage.style.opacity === '0') {
+            beforeImage.style.opacity = '1';
+            afterImage.style.opacity = '0';
+
+            // Переключаем стили меток
+            beforeLabel.style.opacity = '1';
+            afterLabel.style.opacity = '0.4';
+          } else {
+            beforeImage.style.opacity = '0';
+            afterImage.style.opacity = '1';
+
+            // Переключаем стили меток
+            beforeLabel.style.opacity = '0.4';
+            afterLabel.style.opacity = '1';
+          }
+        });
+      });
+    })();
+
+  </script>
+
+
+  <!-- =========================
+     ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
+     Desktop + Mobile
+     с учётом высоты header
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const menuLinks = document.querySelectorAll(
+        '.nav-link[href^="#"], .mobile-nav__link[href^="#"]'
+      );
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          e.preventDefault();
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+
+          // закрываем мобильное меню
+          document.body.classList.remove('no-scroll');
+          document.querySelector('.site-header')?.classList.remove('menu-open');
+          document.getElementById('navOverlay')?.setAttribute('hidden', '');
+        });
+      });
+    });
+  </script>
+
+
+
+
+  <!-- =========================
+     FORM SUBMIT
+     Показ уведомления (toast)
+     и очистка формы
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form form.cta-form');
+      const toast = document.getElementById('toast');
+      const toastClose = document.getElementById('toastClose');
+
+      if (!form || !toast || !toastClose) return;
+
+      let toastTimer = null;
+
+      // показать уведомление
+      function showToast() {
+        toast.classList.add('is-show');
+        toast.setAttribute('aria-hidden', 'false');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 4000);
+      }
+
+      // скрыть уведомление
+      function hideToast() {
+        toast.classList.remove('is-show');
+        toast.setAttribute('aria-hidden', 'true');
+      }
+
+      toastClose.addEventListener('click', hideToast);
+
+      // отправка формы
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); // отменяем реальную отправку
+
+        // здесь позже можно добавить fetch / ajax
+
+        showToast();   // показываем уведомление
+        form.reset();  // очищаем поля
+      });
+    });
+  </script>
+
+
+
+  <!-- =========================
+     Показ фото ДО и ПОСЛЕ 
+     При наведении
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const workCards = document.querySelectorAll('.work-card');
+
+      workCards.forEach(card => {
+        // Переключатель состояния по клику для всех устройств
+        card.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          this.classList.toggle('active');
+        });
+
+        // Сброс по клику вне карточки (опционально)
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('.work-card')) {
+            workCards.forEach(card => {
+              card.classList.remove('active');
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
