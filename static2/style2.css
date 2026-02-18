@@ -1,0 +1,487 @@
+/* =========================================================
+    СТИЛИ СТРАНИЦЫ УСЛУГ (ЕДИНЫЕ ДЛЯ ВСЕХ ВАРИАНТОВ)
+   ========================================================= */
+.service-page {
+    padding: 40px 0 80px;
+    background: #f3f3f3; /* Светлый фон, как в about */
+    color: #0f0f0f;
+}
+
+.service-page .container {
+    width: min(1200px, 94%);
+    margin: 0 auto;
+}
+
+/* Кнопка "Назад" */
+.back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+.back-link:hover {
+    color: #000;
+    border-color: #000;
+}
+
+/* Заголовок услуги */
+.service-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.service-price {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #000;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    margin: 10px 0;
+    color: #0f0f0f;
+}
+.service-subtitle {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.65);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* БАЗОВЫЕ СТИЛИ ДЛЯ СЕТКИ (общие для всех layout) */
+.service-layout {
+    display: grid;
+    gap: 40px;
+    align-items: start;
+}
+
+.service-media {
+    position: relative;
+}
+.image-wrapper {
+    overflow: hidden;
+    border-radius: 20px; /* Базовый скругленный угол */
+    background: #fff;
+}
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+.service-layout:hover .image-wrapper img {
+    transform: scale(1.02);
+}
+
+.service-content {
+    display: flex;
+    align-items: flex-start;
+}
+.content-wrapper {
+    width: 100%;
+}
+.service-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    color: #0f0f0f;
+    letter-spacing: 0.5px;
+}
+.service-content p {
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+/* Блок преимуществ */
+.features {
+    margin: 2rem 0;
+    display: grid;
+    gap: 0.8rem;
+}
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.feature-icon {
+    width: 22px;
+    height: 22px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+.feature-text {
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+/* Кнопка призыва к действию */
+.service-cta {
+    display: inline-block;
+    /* margin-top: 1.5rem; */
+    padding: 16px 32px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 1px solid #000;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.service-cta:hover {
+    background: transparent;
+    color: #000;
+}
+
+
+/* СТИЛИ ДЛЯ ЦЕНЫ В БЛОКЕ ОПИСАНИЯ */
+.price-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.price-final {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.0rem;
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+
+
+/* Убираем старый ценник из заголовка */
+.service-header .service-price {
+    display: none;
+}
+
+/* Для мобильной адаптации */
+@media (max-width: 600px) {
+    .price-action {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .price-final {
+        font-size: 1.8rem;
+    }
+    
+}
+
+
+/* =========================================================
+   Стиль расположение фото + инфа
+   ========================================================= */
+
+/* 1. УБИРАЕМ БЕЛОЕ ПРОСТРАНСТВО ВОКРУГ ФОТО */
+.service-media {
+    position: relative;
+    height: 450px; /* Фиксируем высоту для всех */
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 0; /* Убираем отступ снизу */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .12), 0 2px 8px rgba(0, 0, 0, .06);
+
+}
+
+.image-wrapper {
+    height: 100%; /* Растягиваем на всю высоту */
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Важно! Кадрируем фото */
+    object-position: center center; /* Центрируем фото */
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+/* 2. ФИКСИРУЕМ ВЫСОТУ ДЛЯ ВСЕХ LAYOUT */
+.layout-1 .service-media,
+.layout-2 .service-media {
+    height: 450px; /* Одинаковая высота */
+}
+
+/* 3. ДЛЯ LAYOUT-3 делаем другой подход */
+.layout-3 .service-media {
+    height: 500px; /* Чуть выше для драматизма */
+}
+
+.layout-3 .image-wrapper {
+    border-radius: 0; /* Для full-width эффекта */
+}
+
+/* 4. ЕДИНЫЕ ОТСТУПЫ ВОКРУГ КОНТЕНТА */
+.service-content {
+    padding: 30px 0; /* Вертикальные отступы */
+}
+
+.layout-1 .service-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px; /* Внутренние отступы для карточки */
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .12), 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.layout-2 .service-content {
+    padding: 30px 20px; /* Отступы для layout-2 */
+}
+
+/* 5. ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ВСЕХ УСЛУГ */
+.service-layout {
+    gap: 40px;
+    align-items: stretch; /* Растягиваем на всю высоту */
+}
+
+/* 6. УБИРАЕМ ЛИШНИЕ ОТСТУПЫ В ЗАГОЛОВКАХ */
+.service-page {
+    padding: 120px 0 100px;
+}
+
+.service-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 7. АДАПТАЦИЯ */
+@media (max-width: 900px) {
+    .service-media {
+        height: 380px;
+    }
+    
+    .layout-3 .service-media {
+        height: 420px;
+    }
+    
+    .service-layout {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-media {
+        height: 300px;
+    }
+    
+    .layout-3 .service-media {
+        height: 350px;
+    }
+    
+    .service-page {
+        padding: 20px 0 40px;
+    }
+}
+
+/* =========================================================
+    АДАПТИВ ДЛЯ ВСЕХ ВАРИАНТОВ
+   ========================================================= */
+@media (max-width: 900px) {
+    /* На планшетах все варианты превращаются в одну колонку */
+    .layout-1,
+    .layout-2 {
+        grid-template-columns: 1fr;
+    }
+    .layout-1 .image-wrapper {
+        height: 400px; /* Уменьшаем высоту фото на мобилках */
+    }
+    .layout-3 .service-content {
+        margin-top: -100px;
+        padding: 40px 20px 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-header {
+        margin-bottom: 30px;
+    }
+    .service-price {
+        font-size: 1.5rem;
+    }
+    .service-title {
+        font-size: 2.2rem;
+    }
+    .layout-1 .image-wrapper {
+        height: 300px;
+    }
+    .layout-1 .service-content,
+    .layout-2 .service-content {
+        padding: 25px;
+    }
+    .layout-3 .service-media {
+        min-height: 50vh;
+    }
+    .layout-3 .service-content {
+        margin-top: -80px;
+        padding: 30px 15px 25px;
+    }
+    .layout-3 .service-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* =========================================================
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ УСЛУГ
+   ========================================================= */
+
+/* Стили для маркированных списков */
+.service-content ul {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.service-content li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.service-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Стили для вложенных списков */
+.service-content ul ul {
+    margin: 0.5rem 0 0.5rem 1rem;
+}
+
+.service-content ul ul li:before {
+    content: "-";
+    font-weight: bold;
+}
+
+/* Выделение важных пунктов */
+.highlight-list {
+    background: rgba(255, 255, 255, 0.7);
+    border-left: 3px solid #000;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.highlight-list strong {
+    color: #000;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Блок "Почему стоит выбрать нас" */
+.why-choose {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.why-choose h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .service-content li {
+        padding-left: 1.4rem;
+    }
+    
+    .highlight-list {
+        padding: 1rem;
+    }
+}
+
+/* =========================================================
+   УЛУЧШЕНИЯ ДЛЯ МОТОЦИКЛОВ
+   ========================================================= */
+
+/* Стили для нумерованных фич */
+.feature .feature-icon {
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Отступы между группами фич */
+.features + .features {
+    margin-top: 1rem;
+}
+
+/* Особый стиль для мото-секции */
+#moto-detailing .highlight-list {
+    background: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid #000000; /* Красный акцент для мото */
+}
+
+#moto-detailing .why-choose {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#moto-detailing .service-cta {
+    background: #000000;
+    border-color: #ffffff;
+}
+
+#moto-detailing .service-cta:hover {
+    background: transparent;
+    color: #000000;
+    border-color: #000000;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 600px) {
+    .feature {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .feature .feature-icon {
+        margin-bottom: 5px;
+    }
+}
