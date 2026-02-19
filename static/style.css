@@ -1520,6 +1520,42 @@ body.menu-open {
   scroll-behavior: auto;
 }
 
+/* УЛУЧШЕНИЯ ДЛЯ МОБИЛЬНОГО СКРОЛЛА */
+.works-viewport {
+  -webkit-overflow-scrolling: touch; /* Включает аппаратное ускорение на iOS */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.works-grid.works-track {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  transition: none; /* Убираем лишние transition */
+}
+
+.works-viewport.is-dragging .works-grid.works-track {
+  cursor: grabbing;
+  scroll-behavior: auto; /* При drag отключаем плавность для точности */
+}
+
+.work-card {
+  scroll-snap-align: start;
+  -webkit-tap-highlight-color: transparent; /* Убираем серый фон при тапе на iOS */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; /* Запрещаем вызов контекстного меню на iOS */
+}
+
+/* Запрещаем перетаскивание изображений внутри карточек */
+.work-card img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+
 
 
 

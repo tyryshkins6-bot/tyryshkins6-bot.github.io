@@ -1114,122 +1114,203 @@
   </script>
 
 
-  <!-- =========================
-     WORKS SLIDER
-     Слайдер "Наши работы":
-     - стрелки
-     - drag мышью / тач
-     - пауза при hover
-========================= -->
   <script>
-    (() => {
-      const viewport = document.getElementById('worksViewport');
-      if (!viewport) return;
+(() => {
+  const viewport = document.getElementById('worksViewport');
+  if (!viewport) return;
 
-      const track = viewport.querySelector('.works-track');
-      const prev = viewport.parentElement.querySelector('.works-arrow--prev');
-      const next = viewport.parentElement.querySelector('.works-arrow--next');
+  const track = viewport.querySelector('.works-track');
+  const prev = viewport.parentElement.querySelector('.works-arrow--prev');
+  const next = viewport.parentElement.querySelector('.works-arrow--next');
 
-      // === шаг прокрутки (ширина карточки + gap)
-      const getStep = () => {
-        const card = track.querySelector('.work-card');
-        if (!card) return 320;
-        const styles = getComputedStyle(track);
-        const gap = parseFloat(styles.columnGap || styles.gap || 0);
-        return card.getBoundingClientRect().width + gap;
-      };
+  // === шаг прокрутки (ширина карточки + gap)
+  const getStep = () => {
+    const card = track.querySelector('.work-card');
+    if (!card) return 320;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap || 0);
+    return card.getBoundingClientRect().width + gap;
+  };
 
-      // прокрутка на один шаг влево / вправо
-      const scrollByStep = (dir) => {
-        const step = getStep();
-        const maxScrollLeft = track.scrollWidth - track.clientWidth;
+  // прокрутка на один шаг влево / вправо (для стрелок)
+  const scrollByStep = (dir) => {
+    const step = getStep();
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+    const newPosition = track.scrollLeft + dir * step;
+    
+    // Зацикливание
+    if (newPosition >= maxScrollLeft) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (newPosition <= 0) {
+      track.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
+  };
 
-        // Если достигнут конец, вернуться к началу (или наоборот)
-        if (dir > 0 && track.scrollLeft >= maxScrollLeft) {
-          track.scrollLeft = 0;
-        } else if (dir < 0 && track.scrollLeft <= 0) {
-          track.scrollLeft = maxScrollLeft;
-        } else {
-          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+  prev?.addEventListener('click', () => scrollByStep(-1));
+  next?.addEventListener('click', () => scrollByStep(1));
+
+  /* ---------- УЛУЧШЕННЫЙ DRAG ДЛЯ МОБИЛЬНЫХ ---------- */
+  
+  // Флаг для определения, был ли это "клик" или "драг"
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragStarted = false;
+
+  const onTouchStart = (e) => {
+    isDragging = false;
+    dragStarted = false;
+    startX = e.touches[0].clientX;
+    startScrollLeft = track.scrollLeft;
+    
+    // Не отключаем пассивный режим сразу, чтобы не ломать скролл
+    setTimeout(() => {
+      if (!isDragging) {
+        // Если через 100ms все еще не драг, значит это клик
+      }
+    }, 100);
+  };
+
+  const onTouchMove = (e) => {
+    if (!startX) return;
+    
+    const currentX = e.touches[0].clientX;
+    const diffX = Math.abs(currentX - startX);
+    
+    // Если движение больше 10px - считаем это драгом
+    if (diffX > 10) {
+      dragStarted = true;
+      isDragging = true;
+      viewport.classList.add('is-dragging');
+      
+      // Отключаем плавный скролл во время драга
+      track.style.scrollBehavior = 'auto';
+      
+      // Прокручиваем трек
+      track.scrollLeft = startScrollLeft - (currentX - startX);
+      
+      // Предотвращаем скролл страницы
+      e.preventDefault();
+    }
+  };
+
+  const onTouchEnd = () => {
+    if (dragStarted) {
+      // Включаем обратно плавный скролл
+      track.style.scrollBehavior = 'smooth';
+      viewport.classList.remove('is-dragging');
+      
+      // Снаппинг к ближайшей карточке
+      const step = getStep();
+      const nearest = Math.round(track.scrollLeft / step) * step;
+      track.scrollTo({ left: nearest, behavior: 'smooth' });
+    }
+    
+    // Сбрасываем флаги
+    startX = 0;
+    dragStarted = false;
+    isDragging = false;
+  };
+
+  // Для мыши (оставляем, но тоже улучшаем)
+  const onMouseDown = (e) => {
+    e.preventDefault();
+    startX = e.clientX;
+    startScrollLeft = track.scrollLeft;
+    dragStarted = false;
+    
+    const onMouseMove = (e) => {
+      if (!startX) return;
+      
+      const diffX = Math.abs(e.clientX - startX);
+      
+      if (diffX > 5) {
+        if (!dragStarted) {
+          dragStarted = true;
+          viewport.classList.add('is-dragging');
+          track.style.scrollBehavior = 'auto';
         }
-      };
-
-      prev?.addEventListener('click', () => scrollByStep(-1));
-      next?.addEventListener('click', () => scrollByStep(1));
-
-      /* ---------- DRAG (мышь / тач) ---------- */
-      let isDown = false;
-      let startX = 0;
-      let startLeft = 0;
-
-      const onDown = (clientX) => {
-        isDown = true;
-        viewport.classList.add('is-dragging');
-        startX = clientX;
-        startLeft = track.scrollLeft;
-      };
-
-      const onMove = (clientX) => {
-        if (!isDown) return;
-        const dx = clientX - startX;
-        track.scrollLeft = startLeft - dx;
-      };
-
-      const onUp = () => {
-        if (!isDown) return;
-        isDown = false;
+        
+        track.scrollLeft = startScrollLeft - (e.clientX - startX);
+      }
+    };
+    
+    const onMouseUp = () => {
+      if (dragStarted) {
+        track.style.scrollBehavior = 'smooth';
         viewport.classList.remove('is-dragging');
-
-        // snap к ближайшей карточке
+        
         const step = getStep();
         const nearest = Math.round(track.scrollLeft / step) * step;
         track.scrollTo({ left: nearest, behavior: 'smooth' });
-      };
+      }
+      
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+      startX = 0;
+    };
+    
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+  };
 
-      viewport.addEventListener('mousedown', (e) => onDown(e.clientX));
-      window.addEventListener('mousemove', (e) => onMove(e.clientX));
-      window.addEventListener('mouseup', onUp);
+  // Добавляем обработчики
+  track.addEventListener('touchstart', onTouchStart, { passive: true });
+  track.addEventListener('touchmove', onTouchMove, { passive: false });
+  track.addEventListener('touchend', onTouchEnd);
+  track.addEventListener('touchcancel', onTouchEnd);
+  
+  track.addEventListener('mousedown', onMouseDown);
+  
+  // Предотвращаем перетаскивание изображений по умолчанию
+  const images = track.querySelectorAll('img');
+  images.forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
 
-      viewport.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), { passive: true });
-      viewport.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
-      viewport.addEventListener('touchend', onUp);
+  // Клавиатура
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      scrollByStep(-1);
+    }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      scrollByStep(1);
+    }
+  });
 
-      // клавиатура (стрелки)
-      viewport.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') scrollByStep(-1);
-        if (e.key === 'ArrowRight') scrollByStep(1);
-      });
+  // Клик по карточке для переключения ДО/ПОСЛЕ
+  const workCards = document.querySelectorAll('.work-card');
+  workCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Не переключаем, если был драг
+      if (dragStarted) return;
+      
+      const beforeImage = card.querySelector('.before-image');
+      const afterImage = card.querySelector('.after-image');
+      const beforeLabel = card.querySelector('.before-label');
+      const afterLabel = card.querySelector('.after-label');
 
-      // Добавляем обработчик клика для карточки, чтобы переключать изображения и метки
-      const workCards = document.querySelectorAll('.work-card');
-      workCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const beforeImage = card.querySelector('.before-image');
-          const afterImage = card.querySelector('.after-image');
-          const beforeLabel = card.querySelector('.before-label');
-          const afterLabel = card.querySelector('.after-label');
-
-          // Переключаем видимость изображений
-          if (beforeImage.style.opacity === '0') {
-            beforeImage.style.opacity = '1';
-            afterImage.style.opacity = '0';
-
-            // Переключаем стили меток
-            beforeLabel.style.opacity = '1';
-            afterLabel.style.opacity = '0.4';
-          } else {
-            beforeImage.style.opacity = '0';
-            afterImage.style.opacity = '1';
-
-            // Переключаем стили меток
-            beforeLabel.style.opacity = '0.4';
-            afterLabel.style.opacity = '1';
-          }
-        });
-      });
-    })();
-
-  </script>
+      if (beforeImage && afterImage) {
+        if (beforeImage.style.opacity === '0' || !beforeImage.style.opacity) {
+          beforeImage.style.opacity = '1';
+          afterImage.style.opacity = '0';
+          if (beforeLabel) beforeLabel.style.opacity = '1';
+          if (afterLabel) afterLabel.style.opacity = '0.4';
+        } else {
+          beforeImage.style.opacity = '0';
+          afterImage.style.opacity = '1';
+          if (beforeLabel) beforeLabel.style.opacity = '0.4';
+          if (afterLabel) afterLabel.style.opacity = '1';
+        }
+      }
+    });
+  });
+})();
+</script>
 
 
   <!-- =========================
