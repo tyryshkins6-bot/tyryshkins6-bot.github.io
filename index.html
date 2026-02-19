@@ -1430,6 +1430,52 @@
   });
   
 })();
+
+  // ========== ДЕЛЕГИРОВАНИЕ ДЛЯ КЛОНОВ (чтобы работало на телефоне) ==========
+  
+  // Удаляем старые обработчики с оригинальных карточек, чтобы не было дублей
+  const oldCards = document.querySelectorAll('.work-card');
+  oldCards.forEach(card => {
+    // Удаляем все предыдущие обработчики кликов (простая замена)
+    card.replaceWith(card.cloneNode(true));
+  });
+  
+  // Заново получаем ссылку на track после замены
+  const newTrack = document.getElementById('worksViewport').querySelector('.works-track');
+  
+  // Вешаем один обработчик на весь трек
+  newTrack.addEventListener('click', (e) => {
+    const card = e.target.closest('.work-card');
+    if (!card) return;
+    
+    // Проверяем, не был ли это drag
+    if (dragStarted || touchDragStarted) return;
+    
+    const beforeImage = card.querySelector('.before-image');
+    const afterImage = card.querySelector('.after-image');
+    const beforeLabel = card.querySelector('.before-label');
+    const afterLabel = card.querySelector('.after-label');
+
+    if (beforeImage && afterImage) {
+      if (beforeImage.style.opacity === '0' || !beforeImage.style.opacity) {
+        beforeImage.style.opacity = '1';
+        afterImage.style.opacity = '0';
+        if (beforeLabel) beforeLabel.style.opacity = '1';
+        if (afterLabel) afterLabel.style.opacity = '0.4';
+      } else {
+        beforeImage.style.opacity = '0';
+        afterImage.style.opacity = '1';
+        if (beforeLabel) beforeLabel.style.opacity = '0.4';
+        if (afterLabel) afterLabel.style.opacity = '1';
+      }
+    }
+  });
+  
+  // Обновляем ссылки на изображения для новых клонов
+  const allImages = newTrack.querySelectorAll('img');
+  allImages.forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
 </script>
 
 
