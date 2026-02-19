@@ -1371,77 +1371,7 @@
   
 })();
 
-  // ========== БЛОКИРОВКА СКРОЛЛА ЗА ПОСЛЕДНЕЙ КАРТОЧКОЙ ==========
-  
-  // Отключаем скролл за пределами карточек
-  viewport.addEventListener('scroll', () => {
-    const step = getCardWidth();
-    const totalCards = getTotalCards();
-    const maxScroll = (totalCards - 1) * step;
-    
-    // Если прокрутили дальше последней карточки
-    if (viewport.scrollLeft > maxScroll + 20) {
-      viewport.style.scrollBehavior = 'auto';
-      viewport.scrollLeft = maxScroll;
-      viewport.style.scrollBehavior = 'smooth';
-    }
-    
-    // Если прокрутили раньше первой карточки
-    if (viewport.scrollLeft < -20) {
-      viewport.style.scrollBehavior = 'auto';
-      viewport.scrollLeft = 0;
-      viewport.style.scrollBehavior = 'smooth';
-    }
-  }, { passive: false });
-  
-  // Добавляем обработчик touchmove для предотвращения выхода за границы
-  viewport.addEventListener('touchmove', (e) => {
-    const step = getCardWidth();
-    const totalCards = getTotalCards();
-    const maxScroll = (totalCards - 1) * step;
-    
-    // Если уже на последней карточке и пытаются свайпнуть вправо
-    if (viewport.scrollLeft >= maxScroll - 10) {
-      const touch = e.touches[0];
-      const lastTouchX = touch.clientX;
-      
-      // Определяем направление свайпа (грубо, через глобальную переменную)
-      if (!window.lastTouchX) window.lastTouchX = lastTouchX;
-      
-      const direction = lastTouchX - window.lastTouchX;
-      window.lastTouchX = lastTouchX;
-      
-      // Если свайп влево (хотят уйти за последнюю) - блокируем
-      if (direction < -5) {
-        e.preventDefault();
-      }
-    }
-    
-    // Если на первой карточке и пытаются свайпнуть влево
-    if (viewport.scrollLeft <= 10) {
-      const touch = e.touches[0];
-      const lastTouchX = touch.clientX;
-      
-      if (!window.lastTouchX) window.lastTouchX = lastTouchX;
-      
-      const direction = lastTouchX - window.lastTouchX;
-      window.lastTouchX = lastTouchX;
-      
-      // Если свайп вправо (хотят уйти до первой) - блокируем
-      if (direction > 5) {
-        e.preventDefault();
-      }
-    }
-  }, { passive: false });
-  
-  // Сбрасываем lastTouchX после окончания касания
-  viewport.addEventListener('touchend', () => {
-    window.lastTouchX = null;
-  });
-  
-  viewport.addEventListener('touchcancel', () => {
-    window.lastTouchX = null;
-  });
+
 </script>
 
 
