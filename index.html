@@ -1181,18 +1181,14 @@
     }
   }
   
-  // ========== ДЕЛЕГИРОВАНИЕ СОБЫТИЙ (клик на любую карточку, включая клоны) ==========
-  track.addEventListener('click', (e) => {
-    // Находим ближайшую карточку, по которой кликнули
-    const card = e.target.closest('.work-card');
-    if (!card) return;
-    
-    // Проверяем, не был ли это drag
-    if (dragStarted || touchDragStarted) return;
-    
-    // Переключаем ДО/ПОСЛЕ
-    toggleBeforeAfter(card);
-  });
+  // ========== ДЕЛЕГИРОВАНИЕ СОБЫТИЙ (ПРОСТАЯ ВЕРСИЯ) ==========
+track.addEventListener('click', (e) => {
+  const card = e.target.closest('.work-card');
+  if (!card) return;
+  
+  // Просто переключаем, без проверок на drag
+  toggleBeforeAfter(card);
+});
   
   // ========== СОЗДАНИЕ БЕСКОНЕЧНОЙ ЛЕНТЫ ==========
   
