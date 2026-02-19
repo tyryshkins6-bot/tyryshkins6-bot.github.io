@@ -1566,7 +1566,21 @@ body.menu-open {
 .works-track .work-card {
   box-shadow: 3px 3px 12px rgba(0,0,0,0.2), -3px -3px 12px rgba(255,255,255,0.1);
 }
-
+/* Дополнительные фиксы для мобильного скролла */
+@media (max-width: 768px) {
+  .works-viewport {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: none; /* Временно отключаем снаппинг для плавности */
+  }
+  
+  .works-track {
+    scroll-snap-type: none;
+  }
+  
+  .works-track .work-card {
+    scroll-snap-align: none;
+  }
+}
 
 
 

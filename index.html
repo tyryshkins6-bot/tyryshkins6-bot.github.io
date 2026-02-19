@@ -1119,6 +1119,7 @@
      наших работа
 ========================= -->
 
+<!-- ИДЕАЛЬНЫЙ СКРОЛЛ ДЛЯ РАБОТ (исправленный для мобильных) -->
 <script>
 (function() {
   'use strict';
@@ -1133,11 +1134,14 @@
   
   if (!track) return;
   
+  // Определяем, мобильное ли устройство
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  
   // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
   
   // Получаем ширину одной карточки с учетом gap
   function getCardWidth() {
-    const cards = track.querySelectorAll('.work-card');
+    const cards = track.querySelectorAll('.work-card:not(.clone)'); // Игнорируем клоны для расчета
     if (cards.length === 0) return 520;
     
     const card = cards[0];
@@ -1150,74 +1154,61 @@
     return cardWidth + gap;
   }
   
-  // Получаем общее количество карточек
-  function getTotalCards() {
-    return track.querySelectorAll('.work-card').length;
+  // Получаем общее количество оригинальных карточек
+  function getOriginalCardsCount() {
+    return track.querySelectorAll('.work-card:not(.clone)').length;
   }
   
-  // Получаем индекс текущей карточки (по положению скролла)
-  function getCurrentIndex() {
-    const step = getCardWidth();
-    const scrollLeft = viewport.scrollLeft;
-    const index = Math.round(scrollLeft / step);
-    return Math.min(Math.max(index, 0), getTotalCards() - 1);
-  }
+  // ========== СОЗДАНИЕ БЕСКОНЕЧНОЙ ЛЕНТЫ ==========
   
-  // Прокрутка к определенной карточке
-  function scrollToCard(index, smooth = true) {
-    const step = getCardWidth();
-    const targetScroll = index * step;
-    viewport.scrollTo({
-      left: targetScroll,
-      behavior: smooth ? 'smooth' : 'auto'
-    });
-  }
-  
-  // ========== ЗАЦИКЛИВАНИЕ КОНТЕНТА ==========
-  
-  // Функция для клонирования карточек и создания бесконечной ленты
   function setupInfiniteScroll() {
-    const cards = Array.from(track.querySelectorAll('.work-card'));
-    if (cards.length === 0) return;
+    const originalCards = Array.from(track.querySelectorAll('.work-card:not(.clone)'));
+    if (originalCards.length === 0) return;
     
-    // Запоминаем оригинальное количество карточек
-    const originalCount = cards.length;
+    const originalCount = originalCards.length;
     
-    // Клонируем первую карточку и добавляем в конец
-    const firstCardClone = cards[0].cloneNode(true);
-    firstCardClone.classList.add('clone');
-    track.appendChild(firstCardClone);
+    // Удаляем старые клоны, если они есть
+    const oldClones = track.querySelectorAll('.clone');
+    oldClones.forEach(clone => clone.remove());
     
-    // Клонируем последнюю карточку и добавляем в начало
-    const lastCardClone = cards[cards.length - 1].cloneNode(true);
-    lastCardClone.classList.add('clone');
-    track.insertBefore(lastCardClone, cards[0]);
+    // Создаем МНОГО клонов для мобильных устройств
+    const cloneCount = isMobile ? 5 : 3; // На мобильных делаем больше клонов
     
-    // Добавляем еще по одной карточке для плавности
-    const secondCardClone = cards[1].cloneNode(true);
-    secondCardClone.classList.add('clone');
-    track.appendChild(secondCardClone);
+    // Клонируем карточки в начало и конец по несколько раз
+    for (let i = 0; i < cloneCount; i++) {
+      // Клоны в начало (последние карточки)
+      for (let j = originalCount - 1; j >= 0; j--) {
+        const clone = originalCards[j].cloneNode(true);
+        clone.classList.add('clone');
+        track.insertBefore(clone, track.firstChild);
+      }
+      
+      // Клоны в конец (первые карточки)
+      for (let j = 0; j < originalCount; j++) {
+        const clone = originalCards[j].cloneNode(true);
+        clone.classList.add('clone');
+        track.appendChild(clone);
+      }
+    }
     
-    const secondLastCardClone = cards[cards.length - 2].cloneNode(true);
-    secondLastCardClone.classList.add('clone');
-    track.insertBefore(secondLastCardClone, cards[0]);
-    
-    // Небольшая задержка для корректного расчета ширины
+    // Устанавливаем начальную позицию (в середине клонов)
     setTimeout(() => {
-      // Прокручиваем к началу оригинальных карточек
       const step = getCardWidth();
-      viewport.scrollLeft = step * 2; // Пропускаем два клона в начале
+      // Прокручиваем к началу оригинальных карточек (пропуская клоны)
+      const startPosition = step * originalCount * cloneCount;
+      viewport.scrollLeft = startPosition;
     }, 100);
   }
   
-  // Вызываем функцию для создания бесконечной ленты
+  // Вызываем создание бесконечной ленты
   setupInfiniteScroll();
   
   // ========== ОБРАБОТКА СКРОЛЛА ДЛЯ ЗАЦИКЛИВАНИЯ ==========
   
   let isScrolling = false;
+  let scrollTimeout;
   
-  viewport.addEventListener('scroll', () => {
+  function handleScroll() {
     if (isScrolling) return;
     isScrolling = true;
     
@@ -1226,53 +1217,78 @@
       const scrollLeft = viewport.scrollLeft;
       const totalWidth = track.scrollWidth;
       const viewportWidth = viewport.clientWidth;
-      const maxScroll = totalWidth - viewportWidth;
+      const originalCount = getOriginalCardsCount();
       
-      // Если дошли до конца (с учетом клонов)
-      if (scrollLeft >= maxScroll - step) {
-        // Перепрыгиваем в начало (пропуская клоны)
+      // Границы, где происходит переброс
+      const boundarySize = step * originalCount * 2;
+      const middleZoneStart = boundarySize;
+      const middleZoneEnd = totalWidth - boundarySize;
+      
+      // Если слишком близко к началу
+      if (scrollLeft < boundarySize) {
+        // Перепрыгиваем в середину
         viewport.style.scrollBehavior = 'auto';
-        viewport.scrollLeft = step * 2;
+        viewport.scrollLeft = middleZoneStart + (scrollLeft % step);
         viewport.style.scrollBehavior = 'smooth';
       }
       
-      // Если дошли до начала (с учетом клонов)
-      if (scrollLeft <= step) {
-        // Перепрыгиваем в конец (пропуская клоны)
+      // Если слишком близко к концу
+      if (scrollLeft > middleZoneEnd) {
+        // Перепрыгиваем в середину
         viewport.style.scrollBehavior = 'auto';
-        viewport.scrollLeft = totalWidth - viewportWidth - step * 3;
+        viewport.scrollLeft = middleZoneStart + (scrollLeft % step);
         viewport.style.scrollBehavior = 'smooth';
       }
       
       isScrolling = false;
     });
-  }, { passive: true });
+  }
   
-  // ========== ОБРАБОТКА СТРЕЛОК С ЗАЦИКЛИВАНИЕМ ==========
+  // Используем разные подходы для мобильных и десктопа
+  if (isMobile) {
+    // Для мобильных - более частая проверка
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 50);
+    }, { passive: true });
+  } else {
+    // Для десктопа - через requestAnimationFrame
+    viewport.addEventListener('scroll', handleScroll, { passive: true });
+  }
+  
+  // ========== ОБРАБОТКА СТРЕЛОК ==========
   
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
       const step = getCardWidth();
+      const originalCount = getOriginalCardsCount();
       const currentScroll = viewport.scrollLeft;
-      const newScroll = currentScroll - step;
       
+      // Прокручиваем на одну карточку назад
       viewport.scrollTo({
-        left: newScroll,
+        left: currentScroll - step,
         behavior: 'smooth'
       });
+      
+      // Проверяем, не ушли ли мы слишком далеко
+      setTimeout(handleScroll, 300);
     });
   }
   
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
       const step = getCardWidth();
+      const originalCount = getOriginalCardsCount();
       const currentScroll = viewport.scrollLeft;
-      const newScroll = currentScroll + step;
       
+      // Прокручиваем на одну карточку вперед
       viewport.scrollTo({
-        left: newScroll,
+        left: currentScroll + step,
         behavior: 'smooth'
       });
+      
+      // Проверяем, не ушли ли мы слишком далеко
+      setTimeout(handleScroll, 300);
     });
   }
   
@@ -1281,12 +1297,12 @@
   viewport.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
-      const step = getCardWidth();
-      viewport.scrollBy({ left: -step, behavior: 'smooth' });
+      viewport.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+      setTimeout(handleScroll, 300);
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
-      const step = getCardWidth();
-      viewport.scrollBy({ left: step, behavior: 'smooth' });
+      viewport.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      setTimeout(handleScroll, 300);
     }
   });
   
@@ -1331,12 +1347,13 @@
         const step = getCardWidth();
         const nearestIndex = Math.round(viewport.scrollLeft / step);
         
-        // Плавная прокрутка к ближайшей карточке
         setTimeout(() => {
           viewport.scrollTo({
             left: nearestIndex * step,
             behavior: 'smooth'
           });
+          // Проверяем границы после снаппинга
+          setTimeout(handleScroll, 300);
         }, 50);
       }
       
@@ -1344,24 +1361,27 @@
     }
   });
   
-  // ========== ТАЧ ==========
+  // ========== ТАЧ (МОБИЛЬНЫЕ) ==========
   
   let touchStartX = 0;
   let touchStartScrollLeft = 0;
   let touchDragStarted = false;
+  let touchEndTimeout;
   
   viewport.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
     touchStartScrollLeft = viewport.scrollLeft;
     touchDragStarted = false;
     viewport.classList.add('is-dragging');
+    
+    clearTimeout(touchEndTimeout);
   }, { passive: true });
   
   viewport.addEventListener('touchmove', (e) => {
     const touchX = e.touches[0].clientX;
     const diffX = touchX - touchStartX;
     
-    if (Math.abs(diffX) > 10) {
+    if (Math.abs(diffX) > 5) {
       touchDragStarted = true;
       viewport.style.scrollBehavior = 'auto';
       viewport.scrollLeft = touchStartScrollLeft - diffX;
@@ -1377,12 +1397,15 @@
       const step = getCardWidth();
       const nearestIndex = Math.round(viewport.scrollLeft / step);
       
-      setTimeout(() => {
-        viewport.scrollTo({
-          left: nearestIndex * step,
-          behavior: 'smooth'
-        });
-      }, 50);
+      viewport.scrollTo({
+        left: nearestIndex * step,
+        behavior: 'smooth'
+      });
+      
+      // Проверяем границы после окончания касания
+      touchEndTimeout = setTimeout(() => {
+        handleScroll();
+      }, 300);
     }
     
     touchDragStarted = false;
@@ -1392,6 +1415,16 @@
     viewport.classList.remove('is-dragging');
     viewport.style.scrollBehavior = 'smooth';
     touchDragStarted = false;
+  });
+  
+  // ========== ПЕРЕСТРАИВАЕМ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ОКНА ==========
+  
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      setupInfiniteScroll();
+    }, 300);
   });
   
   // ========== ЗАПРЕЩАЕМ ПЕРЕТАСКИВАНИЕ КАРТИНОК ==========
