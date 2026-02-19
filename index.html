@@ -1182,12 +1182,37 @@
   }
   
   // ========== ДЕЛЕГИРОВАНИЕ СОБЫТИЙ (ПРОСТАЯ ВЕРСИЯ) ==========
+// ========== ДЕЛЕГИРОВАНИЕ СОБЫТИЙ (клик на любую карточку, включая клоны) ==========
 track.addEventListener('click', (e) => {
+  // Находим ближайшую карточку, по которой кликнули
   const card = e.target.closest('.work-card');
   if (!card) return;
   
-  // Просто переключаем, без проверок на drag
+  // НА ДЕСКТОПЕ: проверяем, не был ли это drag
+  // Если мышь двигалась меньше 5px, считаем это кликом
+  const isDrag = dragStarted || touchDragStarted;
+  
+  // Сбрасываем флаги drag для следующего клика
+  dragStarted = false;
+  touchDragStarted = false;
+  
+  // Если это был drag - не переключаем
+  if (isDrag) return;
+  
+  // Переключаем ДО/ПОСЛЕ
   toggleBeforeAfter(card);
+});
+
+// ВАЖНО: добавим обработчик для сброса флагов при уходе мыши с окна
+window.addEventListener('mouseleave', () => {
+  dragStarted = false;
+  touchDragStarted = false;
+});
+
+// И при потере фокуса
+window.addEventListener('blur', () => {
+  dragStarted = false;
+  touchDragStarted = false;
 });
   
   // ========== СОЗДАНИЕ БЕСКОНЕЧНОЙ ЛЕНТЫ ==========
