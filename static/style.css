@@ -1438,49 +1438,86 @@ body.menu-open {
 
 
 /* =========================================================
-   9) СЛАЙДЕР ДЛЯ РАБОТ (горизонтальный скролл)
+   9) СЛАЙДЕР ДЛЯ РАБОТ (идеальный скролл)
    ========================================================= */
 .works-wrap {
   position: relative;
+  width: 100%;
 }
 
+/* Вьюпорт - видимая область */
 .works-viewport {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Ключевое свойство для iOS */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  cursor: grab;
+  padding: 20px 0;
   border-radius: var(--r2);
+  outline: none; /* Убираем рамку при фокусе */
 }
 
-/* Бесконечная прокрутка */
-.works-grid.works-track {
+/* Стилизация скроллбара для Chrome/Safari */
+.works-viewport::-webkit-scrollbar {
+  height: 6px;
+}
+
+.works-viewport::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.works-viewport::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.works-viewport::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Состояние при перетаскивании */
+.works-viewport.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto; /* Отключаем плавность во время драга */
+}
+
+/* Трек - лента с карточками */
+.works-track {
   display: flex;
   gap: 18px;
-  padding: 50px 6px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  flex-wrap: nowrap;  /* Отключаем перенос строк, чтобы элементы шли в одну линию */
+  padding: 30px 20px; /* Увеличил padding для места под тени */
+  width: max-content;
+  scroll-snap-type: x mandatory; /* Принудительное прилипание */
+  transition: none; /* Убираем лишние transition */
 }
 
-.works-grid.works-track::-webkit-scrollbar {
-  display: none;
-}
-
-.works-grid.works-track .work-card {
-  flex: 0 0 auto;
+/* Карточки в слайдере */
+.works-track .work-card {
+  flex: 0 0 min(520px, 86vw);
   scroll-snap-align: start;
-  width: min(520px, 86vw);
   height: 340px;
-  grid-column: unset;
-  /* Плавное сворачивание и разворачивание слайдов */
-  transition: transform 0.4s ease;
+  margin: 0; /* Убираем возможные отступы */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Убираем серый фон при тапе */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none; /* Запрещаем контекстное меню */
 }
 
+/* Отключаем стандартные стили grid для карточек в слайдере */
+.works-track .work-card {
+  grid-column: unset;
+}
 
+/* Стрелки */
 .works-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 20; /* Увеличил z-index */
   width: 52px;
   height: 52px;
   border-radius: 16px;
@@ -1492,7 +1529,7 @@ body.menu-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
 .works-arrow:hover {
@@ -1509,51 +1546,25 @@ body.menu-open {
   right: 10px;
 }
 
-
-
-.works-grid.works-track {
-  cursor: grab;
-}
-
-.works-viewport.is-dragging .works-grid.works-track {
-  cursor: grabbing;
-  scroll-behavior: auto;
-}
-
-/* УЛУЧШЕНИЯ ДЛЯ МОБИЛЬНОГО СКРОЛЛА */
-.works-viewport {
-  -webkit-overflow-scrolling: touch; /* Включает аппаратное ускорение на iOS */
-  overflow-x: auto;
-  scroll-behavior: smooth;
-}
-
-.works-grid.works-track {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
-  transition: none; /* Убираем лишние transition */
-}
-
-.works-viewport.is-dragging .works-grid.works-track {
-  cursor: grabbing;
-  scroll-behavior: auto; /* При drag отключаем плавность для точности */
-}
-
-.work-card {
-  scroll-snap-align: start;
-  -webkit-tap-highlight-color: transparent; /* Убираем серый фон при тапе на iOS */
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none; /* Запрещаем вызов контекстного меню на iOS */
+/* На мобильных стрелки скрываем */
+@media (max-width: 768px) {
+  .works-arrow {
+    display: none;
+  }
 }
 
 /* Запрещаем перетаскивание изображений внутри карточек */
-.work-card img {
+.works-track .work-card img {
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-drag: none;
+}
+
+/* Для красивого отображения теней */
+.works-track .work-card {
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.2), -3px -3px 12px rgba(255,255,255,0.1);
 }
 
 
