@@ -1121,115 +1121,256 @@
      - drag мышью / тач
      - пауза при hover
 ========================= -->
-  <script>
-    (() => {
-      const viewport = document.getElementById('worksViewport');
-      if (!viewport) return;
+  <!-- ИДЕАЛЬНЫЙ СКРОЛЛ ДЛЯ РАБОТ -->
+<script>
+(function() {
+  'use strict';
+  
+  // Получаем элементы
+  const viewport = document.getElementById('worksViewport');
+  if (!viewport) return;
+  
+  const track = viewport.querySelector('.works-track');
+  const prevBtn = document.querySelector('.works-arrow--prev');
+  const nextBtn = document.querySelector('.works-arrow--next');
+  
+  if (!track) return;
+  
+  // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
+  
+  // Получаем ширину одной карточки с учетом gap
+  function getCardWidth() {
+    const cards = track.querySelectorAll('.work-card');
+    if (cards.length === 0) return 520;
+    
+    const card = cards[0];
+    const cardWidth = card.getBoundingClientRect().width;
+    
+    // Получаем gap из стилей track
+    const trackStyles = window.getComputedStyle(track);
+    const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 18);
+    
+    return cardWidth + gap;
+  }
+  
+  // Получаем общее количество карточек
+  function getTotalCards() {
+    return track.querySelectorAll('.work-card').length;
+  }
+  
+  // Получаем индекс текущей карточки (по положению скролла)
+  function getCurrentIndex() {
+    const step = getCardWidth();
+    const scrollLeft = viewport.scrollLeft;
+    const index = Math.round(scrollLeft / step);
+    return Math.min(Math.max(index, 0), getTotalCards() - 1);
+  }
+  
+  // Прокрутка к определенной карточке
+  function scrollToCard(index, smooth = true) {
+    const step = getCardWidth();
+    const targetScroll = index * step;
+    viewport.scrollTo({
+      left: targetScroll,
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+  }
+  
+  // ========== ОБРАБОТКА СТРЕЛОК ==========
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      const currentIndex = getCurrentIndex();
+      if (currentIndex > 0) {
+        scrollToCard(currentIndex - 1);
+      } else {
+        // Зацикливание: если первая карточка, переходим к последней
+        scrollToCard(getTotalCards() - 1);
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const currentIndex = getCurrentIndex();
+      if (currentIndex < getTotalCards() - 1) {
+        scrollToCard(currentIndex + 1);
+      } else {
+        // Зацикливание: если последняя карточка, переходим к первой
+        scrollToCard(0);
+      }
+    });
+  }
+  
+  // ========== КЛАВИАТУРА (СТРЕЛКИ ВЛЕВО/ВПРАВО) ==========
+  
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      const currentIndex = getCurrentIndex();
+      if (currentIndex > 0) {
+        scrollToCard(currentIndex - 1);
+      }
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      const currentIndex = getCurrentIndex();
+      if (currentIndex < getTotalCards() - 1) {
+        scrollToCard(currentIndex + 1);
+      }
+    }
+  });
+  
+  // Делаем viewport фокусируемым для клавиатуры
+  viewport.setAttribute('tabindex', '0');
+  
+  // ========== DRAG МЫШЬЮ ==========
+  
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let dragStarted = false;
+  
+  viewport.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    isDragging = true;
+    startX = e.clientX;
+    startScrollLeft = viewport.scrollLeft;
+    dragStarted = false;
+    
+    // Добавляем класс для изменения курсора
+    viewport.classList.add('is-dragging');
+  });
+  
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const diffX = e.clientX - startX;
+    
+    // Если движение больше 5px - считаем это драгом
+    if (Math.abs(diffX) > 5) {
+      dragStarted = true;
+      
+      // Отключаем плавность во время драга
+      viewport.style.scrollBehavior = 'auto';
+      
+      // Прокручиваем
+      viewport.scrollLeft = startScrollLeft - diffX;
+    }
+  });
+  
+  window.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      viewport.classList.remove('is-dragging');
+      
+      // Возвращаем плавность
+      viewport.style.scrollBehavior = 'smooth';
+      
+      // Если был драг, снаппинг к ближайшей карточке
+      if (dragStarted) {
+        const step = getCardWidth();
+        const nearestIndex = Math.round(viewport.scrollLeft / step);
+        scrollToCard(nearestIndex);
+      }
+      
+      dragStarted = false;
+    }
+  });
+  
+  // ========== ТАЧ (МОБИЛЬНЫЕ УСТРОЙСТВА) ==========
+  
+  let touchStartX = 0;
+  let touchStartScrollLeft = 0;
+  let touchDragStarted = false;
+  
+  viewport.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartScrollLeft = viewport.scrollLeft;
+    touchDragStarted = false;
+    
+    viewport.classList.add('is-dragging');
+  }, { passive: true });
+  
+  viewport.addEventListener('touchmove', (e) => {
+    const touchX = e.touches[0].clientX;
+    const diffX = touchX - touchStartX;
+    
+    if (Math.abs(diffX) > 10) {
+      touchDragStarted = true;
+      
+      // Отключаем плавность во время драга
+      viewport.style.scrollBehavior = 'auto';
+      
+      // Прокручиваем
+      viewport.scrollLeft = touchStartScrollLeft - diffX;
+      
+      // Предотвращаем скролл страницы
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  viewport.addEventListener('touchend', () => {
+    viewport.classList.remove('is-dragging');
+    
+    // Возвращаем плавность
+    viewport.style.scrollBehavior = 'smooth';
+    
+    if (touchDragStarted) {
+      // Снаппинг к ближайшей карточке
+      const step = getCardWidth();
+      const nearestIndex = Math.round(viewport.scrollLeft / step);
+      scrollToCard(nearestIndex);
+    }
+    
+    touchDragStarted = false;
+  });
+  
+  viewport.addEventListener('touchcancel', () => {
+    viewport.classList.remove('is-dragging');
+    viewport.style.scrollBehavior = 'smooth';
+    touchDragStarted = false;
+  });
+  
+  // ========== ПРЕДОТВРАЩАЕМ ПЕРЕТАСКИВАНИЕ КАРТИНОК ==========
+  
+  const images = track.querySelectorAll('img');
+  images.forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+  
+  // ========== ОБРАБОТЧИК КЛИКА ДЛЯ КАРТОЧЕК ==========
+  // (оставляем ваш существующий код для переключения ДО/ПОСЛЕ)
+  
+  const workCards = document.querySelectorAll('.work-card');
+  workCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Не переключаем, если был драг
+      if (dragStarted || touchDragStarted) return;
+      
+      const beforeImage = card.querySelector('.before-image');
+      const afterImage = card.querySelector('.after-image');
+      const beforeLabel = card.querySelector('.before-label');
+      const afterLabel = card.querySelector('.after-label');
 
-      const track = viewport.querySelector('.works-track');
-      const prev = viewport.parentElement.querySelector('.works-arrow--prev');
-      const next = viewport.parentElement.querySelector('.works-arrow--next');
-
-      // === шаг прокрутки (ширина карточки + gap)
-      const getStep = () => {
-        const card = track.querySelector('.work-card');
-        if (!card) return 320;
-        const styles = getComputedStyle(track);
-        const gap = parseFloat(styles.columnGap || styles.gap || 0);
-        return card.getBoundingClientRect().width + gap;
-      };
-
-      // прокрутка на один шаг влево / вправо
-      const scrollByStep = (dir) => {
-        const step = getStep();
-        const maxScrollLeft = track.scrollWidth - track.clientWidth;
-
-        // Если достигнут конец, вернуться к началу (или наоборот)
-        if (dir > 0 && track.scrollLeft >= maxScrollLeft) {
-          track.scrollLeft = 0;
-        } else if (dir < 0 && track.scrollLeft <= 0) {
-          track.scrollLeft = maxScrollLeft;
+      if (beforeImage && afterImage) {
+        if (beforeImage.style.opacity === '0' || !beforeImage.style.opacity) {
+          beforeImage.style.opacity = '1';
+          afterImage.style.opacity = '0';
+          if (beforeLabel) beforeLabel.style.opacity = '1';
+          if (afterLabel) afterLabel.style.opacity = '0.4';
         } else {
-          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+          beforeImage.style.opacity = '0';
+          afterImage.style.opacity = '1';
+          if (beforeLabel) beforeLabel.style.opacity = '0.4';
+          if (afterLabel) afterLabel.style.opacity = '1';
         }
-      };
-
-      prev?.addEventListener('click', () => scrollByStep(-1));
-      next?.addEventListener('click', () => scrollByStep(1));
-
-      /* ---------- DRAG (мышь / тач) ---------- */
-      let isDown = false;
-      let startX = 0;
-      let startLeft = 0;
-
-      const onDown = (clientX) => {
-        isDown = true;
-        viewport.classList.add('is-dragging');
-        startX = clientX;
-        startLeft = track.scrollLeft;
-      };
-
-      const onMove = (clientX) => {
-        if (!isDown) return;
-        const dx = clientX - startX;
-        track.scrollLeft = startLeft - dx;
-      };
-
-      const onUp = () => {
-        if (!isDown) return;
-        isDown = false;
-        viewport.classList.remove('is-dragging');
-
-        // snap к ближайшей карточке
-        const step = getStep();
-        const nearest = Math.round(track.scrollLeft / step) * step;
-        track.scrollTo({ left: nearest, behavior: 'smooth' });
-      };
-
-      viewport.addEventListener('mousedown', (e) => onDown(e.clientX));
-      window.addEventListener('mousemove', (e) => onMove(e.clientX));
-      window.addEventListener('mouseup', onUp);
-
-      viewport.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), { passive: true });
-      viewport.addEventListener('touchmove', (e) => onMove(e.touches[0].clientX), { passive: true });
-      viewport.addEventListener('touchend', onUp);
-
-      // клавиатура (стрелки)
-      viewport.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') scrollByStep(-1);
-        if (e.key === 'ArrowRight') scrollByStep(1);
-      });
-
-      // Добавляем обработчик клика для карточки, чтобы переключать изображения и метки
-      const workCards = document.querySelectorAll('.work-card');
-      workCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const beforeImage = card.querySelector('.before-image');
-          const afterImage = card.querySelector('.after-image');
-          const beforeLabel = card.querySelector('.before-label');
-          const afterLabel = card.querySelector('.after-label');
-
-          // Переключаем видимость изображений
-          if (beforeImage.style.opacity === '0') {
-            beforeImage.style.opacity = '1';
-            afterImage.style.opacity = '0';
-
-            // Переключаем стили меток
-            beforeLabel.style.opacity = '1';
-            afterLabel.style.opacity = '0.4';
-          } else {
-            beforeImage.style.opacity = '0';
-            afterImage.style.opacity = '1';
-
-            // Переключаем стили меток
-            beforeLabel.style.opacity = '0.4';
-            afterLabel.style.opacity = '1';
-          }
-        });
-      });
-    })();
-
-  </script>
+      }
+    });
+  });
+  
+})();
+</script>
 
 
   <!-- =========================
