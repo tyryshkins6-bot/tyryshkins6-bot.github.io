@@ -1206,7 +1206,7 @@ body.menu-open {
 
 /* фон секции about (если используешь) */
 .about {
-  background-image: url("./2pageback.jpg");
+  background-image: url("./2pageback.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -2421,7 +2421,7 @@ body.menu-open {
    ========================================================= */
 .photo-strip {
   height: 200px;
-  background: url("./1pageback.jpg") center / cover no-repeat fixed;
+  background: url("./1pageback.webp") center / cover no-repeat fixed;
 }
 /* Только для iOS */
 @supports (-webkit-touch-callout: none) {
