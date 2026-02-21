@@ -429,7 +429,7 @@
 
   <!-- Услуги -->
   <section class="servicesV2" id="services">
-    <div class="servicesV2__head">
+    <!-- <div class="servicesV2__head">
       <div class="sec-kicker">SERVICES</div>
       <div class="servicesV2__headInner">
         <h2 class="servicesV2__title">НАШИ<br>УСЛУГИ</h2>
@@ -438,7 +438,17 @@
           Работаем аккуратно, с качественными материалами и вниманием к деталям.
         </p>
       </div>
+    </div> -->
+    <div class="container">
+      <div class="sec-head">
+        <div class="sec-kicker">SERVICES</div>
+        <h2 class="sec-title">Наши услуги</h2>
+        <p class="sec-sub">
+          Наш сервис предоставляет широкий спектр услуг по защите, уходу и восстановлению автомобиля.
+          Работаем аккуратно, с качественными материалами и вниманием к деталям. </p>
+      </div>
     </div>
+
 
     <div class="servicesV2__list">
 
@@ -666,7 +676,7 @@
       </div>
     </div>
   </section>
-  
+
 
   <style>
     .section {
@@ -691,8 +701,10 @@
       opacity: 0.6;
       /* Начальная прозрачность */
       transition: opacity 0.3s ease;
-      animation: float 6s ease-in-out infinite;  /* ← добавил анимацию */
-      filter: brightness(0.8) contrast(1.2) blur(1.5px);  /* ← добавил блюр 3px */
+      animation: float 6s ease-in-out infinite;
+      /* ← добавил анимацию */
+      filter: brightness(0.8) contrast(1.2) blur(1.5px);
+      /* ← добавил блюр 3px */
     }
 
     /* Стили для изображения внутри */
@@ -754,9 +766,9 @@
   <!-- FAQ -->
   <section id="faq" class="section section--dark reveal">
     <!-- Декоративный на фоне  -->
-      <div class="process-bg-logo1" aria-hidden="true">
-        <img src="./static2/Logo3D.webp" alt="" width="250" height="250" loading="lazy">
-      </div>
+    <div class="process-bg-logo1" aria-hidden="true">
+      <img src="./static2/Logo3D.webp" alt="" width="250" height="250" loading="lazy">
+    </div>
     <div class="container">
       <div class="sec-head">
         <div class="sec-kicker">FAQ</div>
@@ -766,53 +778,61 @@
 
       <div class="faq">
         <details class="faq-item">
-          <summary class="faq-q"><h3>Сколько держится керамическое покрытие?</h3></summary>
+          <summary class="faq-q">
+            <h3>Сколько держится керамическое покрытие?</h3>
+          </summary>
           <div class="faq-a">
             <p>Срок зависит от состава, подготовки поверхности и ухода. В среднем качественная керамика служит
-            от 12 до 36 месяцев. Мы подбираем состав под ваш режим эксплуатации и обязательно даём
-            рекомендации
-            по мойке и поддерживающим составам.</p>
+              от 12 до 36 месяцев. Мы подбираем состав под ваш режим эксплуатации и обязательно даём
+              рекомендации
+              по мойке и поддерживающим составам.</p>
           </div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-q"><h3>Когда можно мыть автомобиль после плёнки или керамики?</h3></summary>
+          <summary class="faq-q">
+            <h3>Когда можно мыть автомобиль после плёнки или керамики?</h3>
+          </summary>
           <div class="faq-a">
             <p>
               После оклейки плёнкой обычно рекомендуем выдержать 3–7 дней без агрессивных моек (в зависимости
-            от условий).
-            После нанесения керамики — первую мойку лучше делать через 7 дней. Точные сроки подскажем после
-            работ,
-            исходя из материалов и температуры.
+              от условий).
+              После нанесения керамики — первую мойку лучше делать через 7 дней. Точные сроки подскажем после
+              работ,
+              исходя из материалов и температуры.
             </p>.
           </div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-q"><h3>Полировка безопасна для лака?</h3></summary>
+          <summary class="faq-q">
+            <h3>Полировка безопасна для лака?</h3>
+          </summary>
           <div class="faq-a">
             <p>
               Да, при правильной диагностике и подборе абразивности. Мы измеряем толщину ЛКП, подбираем связку
-            паст/кругов
-            и снимаем только необходимый слой для восстановления блеска и удаления дефектов.
+              паст/кругов
+              и снимаем только необходимый слой для восстановления блеска и удаления дефектов.
             </p>
           </div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-q"><h3>Сколько времени занимает комплекс работ?</h3></summary>
+          <summary class="faq-q">
+            <h3>Сколько времени занимает комплекс работ?</h3>
+          </summary>
           <div class="faq-a">
             <p>
               В среднем: тонировка — от 1.5 до 3 часов, полировка — от 1 дня, керамика — от 1 до 2 дней,
-            оклейка полиуретаном — от 1 до 4 дней (зависит от зоны). Срок назовём после осмотра и
-            согласования пакета.
+              оклейка полиуретаном — от 1 до 4 дней (зависит от зоны). Срок назовём после осмотра и
+              согласования пакета.
             </p>
           </div>
         </details>
       </div>
     </div>
   </section>
-<style>
+  <style>
     .section {
       position: relative;
       overflow: hidden;
@@ -835,8 +855,10 @@
       opacity: 0.6;
       /* Начальная прозрачность */
       transition: opacity 0.3s ease;
-      animation: float 6s ease-in-out infinite;  /* ← добавил анимацию */
-      filter: brightness(0.8) contrast(1.2) blur(1.5px);  /* ← добавил блюр 3px */
+      animation: float 6s ease-in-out infinite;
+      /* ← добавил анимацию */
+      filter: brightness(0.8) contrast(1.2) blur(1.5px);
+      /* ← добавил блюр 3px */
     }
 
     /* Стили для изображения внутри */
@@ -1128,316 +1150,316 @@
      - пауза при hover
 ========================= -->
   <!-- ИДЕАЛЬНЫЙ СКРОЛЛ ДЛЯ РАБОТ -->
-<script>
-(function() {
-  'use strict';
-  
-  // Получаем элементы
-  const viewport = document.getElementById('worksViewport');
-  if (!viewport) return;
-  
-  const track = viewport.querySelector('.works-track');
-  const prevBtn = document.querySelector('.works-arrow--prev');
-  const nextBtn = document.querySelector('.works-arrow--next');
-  
-  if (!track) return;
-  
-  // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
-  
-  // Получаем ширину одной карточки с учетом gap
-  function getCardWidth() {
-    const cards = track.querySelectorAll('.work-card');
-    if (cards.length === 0) return 520;
-    
-    const card = cards[0];
-    const cardWidth = card.getBoundingClientRect().width;
-    
-    // Получаем gap из стилей track
-    const trackStyles = window.getComputedStyle(track);
-    const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 18);
-    
-    return cardWidth + gap;
-  }
-  
-  // Получаем общее количество карточек
-  function getTotalCards() {
-    return track.querySelectorAll('.work-card').length;
-  }
-  
-  // Получаем индекс текущей карточки (по положению скролла)
-  function getCurrentIndex() {
-    const step = getCardWidth();
-    const scrollLeft = viewport.scrollLeft;
-    const index = Math.round(scrollLeft / step);
-    return Math.min(Math.max(index, 0), getTotalCards() - 1);
-  }
-  
-  // Получаем максимально допустимый scrollLeft
-  function getMaxScrollLeft() {
-    const step = getCardWidth();
-    const totalCards = getTotalCards();
-    return (totalCards - 1) * step;
-  }
-  
-  // Прокрутка к определенной карточке
-  function scrollToCard(index, smooth = true) {
-    const step = getCardWidth();
-    const targetScroll = index * step;
-    
-    // Ограничиваем целевой скролл допустимыми пределами
-    const maxScroll = getMaxScrollLeft();
-    const boundedTargetScroll = Math.min(Math.max(targetScroll, 0), maxScroll);
-    
-    viewport.scrollTo({
-      left: boundedTargetScroll,
-      behavior: smooth ? 'smooth' : 'auto'
-    });
-  }
-  
-  // Предотвращение выхода за границы при скролле
-  function preventOverscroll() {
-    const maxScroll = getMaxScrollLeft();
-    const currentScroll = viewport.scrollLeft;
-    
-    if (currentScroll < 0) {
-      viewport.scrollLeft = 0;
-    } else if (currentScroll > maxScroll) {
-      viewport.scrollLeft = maxScroll;
-    }
-  }
-  
-  // ========== ОБРАБОТКА СТРЕЛОК ==========
-  
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      const currentIndex = getCurrentIndex();
-      if (currentIndex > 0) {
-        scrollToCard(currentIndex - 1);
-      } else {
-        // Зацикливание: если первая карточка, переходим к последней
-        scrollToCard(getTotalCards() - 1);
-      }
-    });
-  }
-  
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      const currentIndex = getCurrentIndex();
-      if (currentIndex < getTotalCards() - 1) {
-        scrollToCard(currentIndex + 1);
-      } else {
-        // Зацикливание: если последняя карточка, переходим к первой
-        scrollToCard(0);
-      }
-    });
-  }
-  
-  // ========== КЛАВИАТУРА (СТРЕЛКИ ВЛЕВО/ВПРАВО) ==========
-  
-  viewport.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      const currentIndex = getCurrentIndex();
-      if (currentIndex > 0) {
-        scrollToCard(currentIndex - 1);
-      }
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      const currentIndex = getCurrentIndex();
-      if (currentIndex < getTotalCards() - 1) {
-        scrollToCard(currentIndex + 1);
-      }
-    }
-  });
-  
-  // Делаем viewport фокусируемым для клавиатуры
-  viewport.setAttribute('tabindex', '0');
-  
-  // ========== DRAG МЫШЬЮ ==========
-  
-  let isDragging = false;
-  let startX = 0;
-  let startScrollLeft = 0;
-  let dragStarted = false;
-  
-  viewport.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    isDragging = true;
-    startX = e.clientX;
-    startScrollLeft = viewport.scrollLeft;
-    dragStarted = false;
-    
-    // Добавляем класс для изменения курсора
-    viewport.classList.add('is-dragging');
-  });
-  
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    
-    const diffX = e.clientX - startX;
-    
-    // Если движение больше 5px - считаем это драгом
-    if (Math.abs(diffX) > 5) {
-      dragStarted = true;
-      
-      // Отключаем плавность во время драга
-      viewport.style.scrollBehavior = 'auto';
-      
-      // Прокручиваем с ограничением по границам
-      const maxScroll = getMaxScrollLeft();
-      let newScrollLeft = startScrollLeft - diffX;
-      newScrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
-      viewport.scrollLeft = newScrollLeft;
-    }
-  });
-  
-  window.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      viewport.classList.remove('is-dragging');
-      
-      // Возвращаем плавность
-      viewport.style.scrollBehavior = 'smooth';
-      
-      // Если был драг, снаппинг к ближайшей карточке
-      if (dragStarted) {
-        const step = getCardWidth();
-        const nearestIndex = Math.round(viewport.scrollLeft / step);
-        scrollToCard(nearestIndex);
-      }
-      
-      dragStarted = false;
-    }
-  });
-  
-  // ========== ТАЧ (МОБИЛЬНЫЕ УСТРОЙСТВА) ==========
-  
-  let touchStartX = 0;
-  let touchStartScrollLeft = 0;
-  let touchDragStarted = false;
-  
-  viewport.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartScrollLeft = viewport.scrollLeft;
-    touchDragStarted = false;
-    
-    viewport.classList.add('is-dragging');
-  }, { passive: true });
-  
-  viewport.addEventListener('touchmove', (e) => {
-    const touchX = e.touches[0].clientX;
-    const diffX = touchX - touchStartX;
-    
-    if (Math.abs(diffX) > 10) {
-      touchDragStarted = true;
-      
-      // Отключаем плавность во время драга
-      viewport.style.scrollBehavior = 'auto';
-      
-      // Прокручиваем с ограничением по границам
-      const maxScroll = getMaxScrollLeft();
-      let newScrollLeft = touchStartScrollLeft - diffX;
-      newScrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
-      viewport.scrollLeft = newScrollLeft;
-      
-      // Предотвращаем скролл страницы
-      e.preventDefault();
-    }
-  }, { passive: false });
-  
-  viewport.addEventListener('touchend', () => {
-    viewport.classList.remove('is-dragging');
-    
-    // Возвращаем плавность
-    viewport.style.scrollBehavior = 'smooth';
-    
-    if (touchDragStarted) {
-      // Снаппинг к ближайшей карточке
-      const step = getCardWidth();
-      const nearestIndex = Math.round(viewport.scrollLeft / step);
-      scrollToCard(nearestIndex);
-    }
-    
-    touchDragStarted = false;
-  });
-  
-  viewport.addEventListener('touchcancel', () => {
-    viewport.classList.remove('is-dragging');
-    viewport.style.scrollBehavior = 'smooth';
-    touchDragStarted = false;
-  });
-  
-  // ========== ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА ОТ OVERSCROLL НА IOS ==========
-  
-  // Отслеживаем скролл и предотвращаем выход за границы
-  viewport.addEventListener('scroll', () => {
-    preventOverscroll();
-  }, { passive: false });
-  
-  // Специально для iOS: предотвращаем нативный overscroll
-  viewport.addEventListener('scrollstart', (e) => {
-    e.preventDefault();
-  }, { passive: false });
-  
-  // Блокируем скролл за пределами контента при быстрых свайпах
-  viewport.addEventListener('touchmove', (e) => {
-    const currentScroll = viewport.scrollLeft;
-    const maxScroll = getMaxScrollLeft();
-    
-    // Если достигнут край и пользователь пытается скроллить дальше - блокируем
-    if ((currentScroll <= 0 && e.touches[0].clientX > touchStartX) || 
-        (currentScroll >= maxScroll && e.touches[0].clientX < touchStartX)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-  
-  // ========== ПРЕДОТВРАЩАЕМ ПЕРЕТАСКИВАНИЕ КАРТИНОК ==========
-  
-  const images = track.querySelectorAll('img');
-  images.forEach(img => {
-    img.addEventListener('dragstart', (e) => e.preventDefault());
-  });
-  
-  // ========== ОБРАБОТЧИК КЛИКА ДЛЯ КАРТОЧЕК ==========
-  
-  const workCards = document.querySelectorAll('.work-card');
-  workCards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Не переключаем, если был драг
-      if (dragStarted || touchDragStarted) return;
-      
-      const beforeImage = card.querySelector('.before-image');
-      const afterImage = card.querySelector('.after-image');
-      const beforeLabel = card.querySelector('.before-label');
-      const afterLabel = card.querySelector('.after-label');
+  <script>
+    (function () {
+      'use strict';
 
-      if (beforeImage && afterImage) {
-        if (beforeImage.style.opacity === '0' || !beforeImage.style.opacity) {
-          beforeImage.style.opacity = '1';
-          afterImage.style.opacity = '0';
-          if (beforeLabel) beforeLabel.style.opacity = '1';
-          if (afterLabel) afterLabel.style.opacity = '0.4';
-        } else {
-          beforeImage.style.opacity = '0';
-          afterImage.style.opacity = '1';
-          if (beforeLabel) beforeLabel.style.opacity = '0.4';
-          if (afterLabel) afterLabel.style.opacity = '1';
+      // Получаем элементы
+      const viewport = document.getElementById('worksViewport');
+      if (!viewport) return;
+
+      const track = viewport.querySelector('.works-track');
+      const prevBtn = document.querySelector('.works-arrow--prev');
+      const nextBtn = document.querySelector('.works-arrow--next');
+
+      if (!track) return;
+
+      // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
+
+      // Получаем ширину одной карточки с учетом gap
+      function getCardWidth() {
+        const cards = track.querySelectorAll('.work-card');
+        if (cards.length === 0) return 520;
+
+        const card = cards[0];
+        const cardWidth = card.getBoundingClientRect().width;
+
+        // Получаем gap из стилей track
+        const trackStyles = window.getComputedStyle(track);
+        const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 18);
+
+        return cardWidth + gap;
+      }
+
+      // Получаем общее количество карточек
+      function getTotalCards() {
+        return track.querySelectorAll('.work-card').length;
+      }
+
+      // Получаем индекс текущей карточки (по положению скролла)
+      function getCurrentIndex() {
+        const step = getCardWidth();
+        const scrollLeft = viewport.scrollLeft;
+        const index = Math.round(scrollLeft / step);
+        return Math.min(Math.max(index, 0), getTotalCards() - 1);
+      }
+
+      // Получаем максимально допустимый scrollLeft
+      function getMaxScrollLeft() {
+        const step = getCardWidth();
+        const totalCards = getTotalCards();
+        return (totalCards - 1) * step;
+      }
+
+      // Прокрутка к определенной карточке
+      function scrollToCard(index, smooth = true) {
+        const step = getCardWidth();
+        const targetScroll = index * step;
+
+        // Ограничиваем целевой скролл допустимыми пределами
+        const maxScroll = getMaxScrollLeft();
+        const boundedTargetScroll = Math.min(Math.max(targetScroll, 0), maxScroll);
+
+        viewport.scrollTo({
+          left: boundedTargetScroll,
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+      }
+
+      // Предотвращение выхода за границы при скролле
+      function preventOverscroll() {
+        const maxScroll = getMaxScrollLeft();
+        const currentScroll = viewport.scrollLeft;
+
+        if (currentScroll < 0) {
+          viewport.scrollLeft = 0;
+        } else if (currentScroll > maxScroll) {
+          viewport.scrollLeft = maxScroll;
         }
       }
-    });
-  });
-  
-  // ========== ИНИЦИАЛИЗАЦИЯ ==========
-  
-  // Устанавливаем правильный scroll-behavior
-  viewport.style.scrollBehavior = 'smooth';
-  
-  // Убеждаемся, что начальная позиция корректна
-  scrollToCard(0, false);
-  
-})();
-</script>
+
+      // ========== ОБРАБОТКА СТРЕЛОК ==========
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const currentIndex = getCurrentIndex();
+          if (currentIndex > 0) {
+            scrollToCard(currentIndex - 1);
+          } else {
+            // Зацикливание: если первая карточка, переходим к последней
+            scrollToCard(getTotalCards() - 1);
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const currentIndex = getCurrentIndex();
+          if (currentIndex < getTotalCards() - 1) {
+            scrollToCard(currentIndex + 1);
+          } else {
+            // Зацикливание: если последняя карточка, переходим к первой
+            scrollToCard(0);
+          }
+        });
+      }
+
+      // ========== КЛАВИАТУРА (СТРЕЛКИ ВЛЕВО/ВПРАВО) ==========
+
+      viewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const currentIndex = getCurrentIndex();
+          if (currentIndex > 0) {
+            scrollToCard(currentIndex - 1);
+          }
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const currentIndex = getCurrentIndex();
+          if (currentIndex < getTotalCards() - 1) {
+            scrollToCard(currentIndex + 1);
+          }
+        }
+      });
+
+      // Делаем viewport фокусируемым для клавиатуры
+      viewport.setAttribute('tabindex', '0');
+
+      // ========== DRAG МЫШЬЮ ==========
+
+      let isDragging = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let dragStarted = false;
+
+      viewport.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startScrollLeft = viewport.scrollLeft;
+        dragStarted = false;
+
+        // Добавляем класс для изменения курсора
+        viewport.classList.add('is-dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+
+        const diffX = e.clientX - startX;
+
+        // Если движение больше 5px - считаем это драгом
+        if (Math.abs(diffX) > 5) {
+          dragStarted = true;
+
+          // Отключаем плавность во время драга
+          viewport.style.scrollBehavior = 'auto';
+
+          // Прокручиваем с ограничением по границам
+          const maxScroll = getMaxScrollLeft();
+          let newScrollLeft = startScrollLeft - diffX;
+          newScrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
+          viewport.scrollLeft = newScrollLeft;
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          viewport.classList.remove('is-dragging');
+
+          // Возвращаем плавность
+          viewport.style.scrollBehavior = 'smooth';
+
+          // Если был драг, снаппинг к ближайшей карточке
+          if (dragStarted) {
+            const step = getCardWidth();
+            const nearestIndex = Math.round(viewport.scrollLeft / step);
+            scrollToCard(nearestIndex);
+          }
+
+          dragStarted = false;
+        }
+      });
+
+      // ========== ТАЧ (МОБИЛЬНЫЕ УСТРОЙСТВА) ==========
+
+      let touchStartX = 0;
+      let touchStartScrollLeft = 0;
+      let touchDragStarted = false;
+
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartScrollLeft = viewport.scrollLeft;
+        touchDragStarted = false;
+
+        viewport.classList.add('is-dragging');
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', (e) => {
+        const touchX = e.touches[0].clientX;
+        const diffX = touchX - touchStartX;
+
+        if (Math.abs(diffX) > 10) {
+          touchDragStarted = true;
+
+          // Отключаем плавность во время драга
+          viewport.style.scrollBehavior = 'auto';
+
+          // Прокручиваем с ограничением по границам
+          const maxScroll = getMaxScrollLeft();
+          let newScrollLeft = touchStartScrollLeft - diffX;
+          newScrollLeft = Math.min(Math.max(newScrollLeft, 0), maxScroll);
+          viewport.scrollLeft = newScrollLeft;
+
+          // Предотвращаем скролл страницы
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      viewport.addEventListener('touchend', () => {
+        viewport.classList.remove('is-dragging');
+
+        // Возвращаем плавность
+        viewport.style.scrollBehavior = 'smooth';
+
+        if (touchDragStarted) {
+          // Снаппинг к ближайшей карточке
+          const step = getCardWidth();
+          const nearestIndex = Math.round(viewport.scrollLeft / step);
+          scrollToCard(nearestIndex);
+        }
+
+        touchDragStarted = false;
+      });
+
+      viewport.addEventListener('touchcancel', () => {
+        viewport.classList.remove('is-dragging');
+        viewport.style.scrollBehavior = 'smooth';
+        touchDragStarted = false;
+      });
+
+      // ========== ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА ОТ OVERSCROLL НА IOS ==========
+
+      // Отслеживаем скролл и предотвращаем выход за границы
+      viewport.addEventListener('scroll', () => {
+        preventOverscroll();
+      }, { passive: false });
+
+      // Специально для iOS: предотвращаем нативный overscroll
+      viewport.addEventListener('scrollstart', (e) => {
+        e.preventDefault();
+      }, { passive: false });
+
+      // Блокируем скролл за пределами контента при быстрых свайпах
+      viewport.addEventListener('touchmove', (e) => {
+        const currentScroll = viewport.scrollLeft;
+        const maxScroll = getMaxScrollLeft();
+
+        // Если достигнут край и пользователь пытается скроллить дальше - блокируем
+        if ((currentScroll <= 0 && e.touches[0].clientX > touchStartX) ||
+          (currentScroll >= maxScroll && e.touches[0].clientX < touchStartX)) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // ========== ПРЕДОТВРАЩАЕМ ПЕРЕТАСКИВАНИЕ КАРТИНОК ==========
+
+      const images = track.querySelectorAll('img');
+      images.forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+      });
+
+      // ========== ОБРАБОТЧИК КЛИКА ДЛЯ КАРТОЧЕК ==========
+
+      const workCards = document.querySelectorAll('.work-card');
+      workCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Не переключаем, если был драг
+          if (dragStarted || touchDragStarted) return;
+
+          const beforeImage = card.querySelector('.before-image');
+          const afterImage = card.querySelector('.after-image');
+          const beforeLabel = card.querySelector('.before-label');
+          const afterLabel = card.querySelector('.after-label');
+
+          if (beforeImage && afterImage) {
+            if (beforeImage.style.opacity === '0' || !beforeImage.style.opacity) {
+              beforeImage.style.opacity = '1';
+              afterImage.style.opacity = '0';
+              if (beforeLabel) beforeLabel.style.opacity = '1';
+              if (afterLabel) afterLabel.style.opacity = '0.4';
+            } else {
+              beforeImage.style.opacity = '0';
+              afterImage.style.opacity = '1';
+              if (beforeLabel) beforeLabel.style.opacity = '0.4';
+              if (afterLabel) afterLabel.style.opacity = '1';
+            }
+          }
+        });
+      });
+
+      // ========== ИНИЦИАЛИЗАЦИЯ ==========
+
+      // Устанавливаем правильный scroll-behavior
+      viewport.style.scrollBehavior = 'smooth';
+
+      // Убеждаемся, что начальная позиция корректна
+      scrollToCard(0, false);
+
+    })();
+  </script>
 
 
   <!-- =========================
