@@ -2420,8 +2420,28 @@ body.menu-open {
    16) ДЕКОР / ПОЛОСА С ФОТО
    ========================================================= */
 .photo-strip {
-  height: 200px;
-  background: url("./1pageback.jpg") center / cover no-repeat fixed;
+    height: 200px;
+    position: relative;
+    /* Фолбэк для старых браузеров */
+    background: url(./1pageback.jpg) center / cover no-repeat;
+    /* Отключаем fixed для iOS */
+    background-attachment: scroll;
+    z-index: 1;
+}
+
+.photo-strip::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px; /* Такая же высота как у родителя */
+    background: url(./1pageback.jpg) center / cover no-repeat;
+    /* Важно для iOS */
+    transform: translateZ(0);
+    will-change: transform;
+    pointer-events: none; /* Чтобы не мешать кликам */
+    z-index: -1;
 }
 
 /* =========================================================
