@@ -2113,56 +2113,27 @@ body.menu-open {
 }
 
 .cta-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-  align-items: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-.cta-left,
 .cta-form {
   border-radius: var(--r2);
   border: 1px solid rgba(0, 0, 0, 0.10);
   background: rgba(255, 255, 255, 0.92);
   box-shadow: var(--shadow3);
-  padding: 22px;
+  padding: 32px;
+  width: 100%;
 }
 
-.cta-left {
-  grid-column: span 5;
-}
-
-.cta-form {
-  grid-column: span 7;
-}
-
-.cta-points {
-  margin-top: 16px;
-  display: grid;
-  gap: 10px;
-}
-
-.cta-point {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(0, 0, 0, 0.70);
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.cta-point .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.85);
-  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.06);
-}
-
+/* Добавим немного отступов для полей */
 .field {
   display: grid;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .field label {
@@ -2180,7 +2151,7 @@ body.menu-open {
   border: 1px solid rgba(0, 0, 0, 0.14);
   background: rgba(255, 255, 255, 0.92);
   color: rgba(0, 0, 0, 0.90);
-  padding: 12px 14px;
+  padding: 14px 16px;
   outline: none;
   transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease, background .25s ease;
 }
@@ -2204,62 +2175,77 @@ body.menu-open {
   color: rgba(0, 0, 0, 0.40);
 }
 
+/* Чекбокс */
 .agree {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 10px 0 14px;
+  margin: 20px 0 16px;
   color: rgba(0, 0, 0, 0.70);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .agree input {
   width: 18px;
   height: 18px;
   accent-color: #111;
+  margin: 0;
 }
 
+/* Кнопка отправки */
 .submit {
   width: 100%;
-
   background: #000;
   color: #fff;
-
   border: 1px solid #000;
-
-  padding: 14px 16px;
+  padding: 16px 20px;
   border-radius: 18px;
-
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: .22em;
   text-transform: uppercase;
-
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
 
-  transition:
-    transform .25s ease,
-    background .25s ease,
-    color .25s ease,
-    border-color .25s ease,
-    box-shadow .25s ease;
+.submit i {
+  font-size: 14px;
+  transition: transform .25s ease;
 }
 
 .submit:hover {
   transform: translateY(-2px);
-
   background: #fff;
   color: #000;
-
   border-color: #000;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
+.submit:hover i {
+  transform: translateX(4px);
+}
 
+/* Маленький текст */
 .small {
-  margin-top: 10px;
+  margin-top: 16px;
   color: rgba(0, 0, 0, 0.55);
   font-size: 12px;
   line-height: 1.6;
+  text-align: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .cta-form {
+    padding: 24px;
+  }
+  
+  .cta-grid {
+    padding: 0 16px;
+  }
 }
 
 /* =========================================================
