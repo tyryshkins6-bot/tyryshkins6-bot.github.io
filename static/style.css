@@ -2423,6 +2423,14 @@ body.menu-open {
   height: 200px;
   background: url("./1pageback.jpg") center / cover no-repeat fixed;
 }
+/* Только для iOS */
+@supports (-webkit-touch-callout: none) {
+    .photo-strip {
+        background-attachment: scroll;
+        /* Имитация fixed через background-position */
+        background-position: center 0;
+    }
+}
 
 /* =========================================================
    17) АДАПТИВ (в одном месте, чтобы легко искать)
