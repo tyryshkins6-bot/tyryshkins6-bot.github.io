@@ -1,418 +1,404 @@
 ﻿<!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Featured Services</title>
-    <!-- Font Awesome для иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-    /* СБРОС СТИЛЕЙ */
-    .featured-services-container * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TINT MASTERS - Детейлинг автомобилей</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon (иконка сайта) -->
+  <link rel="icon" href="./Logo-Tint.webp" type="image/png">
+  <link rel="stylesheet" href="./static/style.css">
+  <script src="./static/burger.js" defer></script>
 
-    /* ПЕРЕМЕННАЯ ДЛЯ УПРАВЛЕНИЯ ПРОПОРЦИЯМИ КАРТОЧЕК */
-    :root {
-        --card-width-ratio: 1.5; /* ИЗМЕНЯЙТЕ ЭТО ДЛЯ ВЫТЯГИВАНИЯ В БОК */
-        /* 1.0 = квадрат, 1.5 = прямоугольник, 2.0 = очень вытянутый */
-        --card-base-height: 250px; /* БАЗОВАЯ ВЫСОТА */
-    }
 
-    /* СЕКЦИЯ FEATURED SERVICES */
-    .featured-services-section {
-        position: relative;
-        width: 100%;
-        padding: 120px 0;
-        background-color: #ffffff;
-        overflow: hidden;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  <!-- Стиль хэдера (Inter + Montserrat) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
-    /* ТРЕУГОЛЬНЫЙ РАЗДЕЛИТЕЛЬ СНИЗУ */
-    .section-divider {
-        position: absolute;
-        bottom: -1px;
-        left: 0;
-        width: 100%;
-        height: 150px;
-        overflow: hidden;
-        line-height: 0;
-        transform: rotate(180deg);
-        z-index: 1;
-    }
 
-    .section-divider svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 150px;
-    }
 
-    .divider-fill {
-        fill: #f8f9fa;
-    }
 
-    /* КОНТЕЙНЕР - УВЕЛИЧИМ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
-    .services-wrapper {
-        max-width: 1400px; /* УВЕЛИЧИЛИ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-        z-index: 2;
-    }
-
-    /* ЗАГОЛОВОК */
-    .section-title {
-        text-align: center;
-        margin-bottom: 80px;
-    }
-
-    .section-title h2 {
-        font-size: 48px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        color: #333;
-    }
-
-    .title-light {
-        color: #999;
-        font-weight: 300;
-    }
-
-    .title-bold {
-        color: #111;
-        font-weight: 800;
-    }
-
-    /* СЕТКА КАРТОЧЕК */
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-
-    /* КАРТОЧКИ УСЛУГ - ВЫТЯНУТЫЕ В БОК (ИСПРАВЛЕННО!) */
-    .service-card {
-        position: relative;
-        /* УБИРАЕМ ФИКСИРОВАННУЮ ВЫСОТУ И ИСПОЛЬЗУЕМ aspect-ratio */
-        height: 0; /* ВАЖНО: обнуляем высоту */
-        padding-bottom: calc(100% / var(--card-width-ratio)); /* МАГИЯ! */
-        border-radius: 0;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.4s ease;
-        text-decoration: none;
-        color: white;
-        background: #000;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-    }
-
-    /* ЛЕГКОЕ УВЕЛИЧЕНИЕ ТЕНИ ПРИ НАВЕДЕНИИ */
-    .service-card:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    /* ФОН КАРТОЧКИ - АДАПТИРУЕМ ПОД ВЫТЯНУТЫЕ КАРТОЧКИ */
-    .card-background {
-    position: absolute;
-    inset: 0;
-
-    width: 160%;
-    height: 100%;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    background-position: left center;
-
-    transition: transform 1.8s ease-out;
-    will-change: transform;
-}
-
-    /* ПРИ НАВЕДЕНИИ: сдвигаем влево, показывая левую часть */
-    .service-card:hover .card-background {
-    transform: translateX(-25%);
-}
-
-    /* ТЕМНЫЙ НАКЛАДНОЙ СЛОЙ */
-    .card-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.9) 0%,
-            rgba(0, 0, 0, 0.7) 50%,
-            rgba(0, 0, 0, 0.4) 100%
-        );
-        opacity: 0.7;
-    }
-
-    /* СОДЕРЖИМОЕ КАРТОЧКИ - ТЕПЕРЬ АБСОЛЮТНОЕ ПОЗИЦИОНИРОВАНИЕ */
-    .card-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 25px;
-        z-index: 3;
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    /* ТЕКСТОВАЯ ЧАСТЬ */
-    .card-text {
-        flex: 1;
-    }
-
-    /* ЗАГОЛОВОК УСЛУГИ */
-    .card-service-title {
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0 0 8px 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    /* ССЫЛКА "ПОДРОБНЕЕ" */
-    .card-link {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 14px;
-        font-weight: 600;
-        opacity: 0.9;
-    }
-
-    /* АДАПТИВНОСТЬ */
-
-    /* ПЛАНШЕТЫ: 2 КОЛОНКИ */
-    @media (max-width: 1024px) {
-        .services-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-        
-        .section-title h2 {
-            font-size: 40px;
-        }
-        
-        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ ПЛАНШЕТОВ */
-        :root {
-            --card-width-ratio: 1.4;
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .card-service-title {
-            font-size: 17px;
-        }
-    }
-
-    /* МОБИЛЬНЫЕ: 1 КОЛОНКА */
-    @media (max-width: 768px) {
-        .services-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 600px; /* УВЕЛИЧИЛИ ДЛЯ ВЫТЯНУТЫХ КАРТОЧЕК */
-            margin: 0 auto;
-        }
-        
-        .featured-services-section {
-            padding: 80px 0 60px;
-        }
-        
-        .section-title {
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-        
-        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ МОБИЛЬНЫХ */
-        :root {
-            --card-width-ratio: 1.3;
-        }
-        
-        .card-content {
-            padding: 20px;
-        }
-        
-        .card-background {
-            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 180%;
-        }
-        
-        .service-card:hover .card-background {
-            transform: translateX(-15%);
-        }
-    }
-
-    /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ */
-    @media (max-width: 480px) {
-        .services-grid {
-            gap: 15px;
-        }
-        
-        /* МЕНЯЕМ ПРОПОРЦИИ ДЛЯ ТЕЛЕФОНОВ */
-        :root {
-            --card-width-ratio: 1.2;
-        }
-        
-        .card-content {
-            padding: 18px;
-        }
-        
-        .card-service-title {
-            font-size: 16px;
-        }
-        
-        .card-link {
-            font-size: 13px;
-        }
-    }
-</style>
 </head>
-<body>
-        <!-- НАЧАЛО СЕКЦИИ - КОПИРУЙТЕ ОТСЮДА -->
-    <section class="featured-services-section">
-        <!-- Треугольный разделитель -->
-        <div class="section-divider">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                <path class="divider-fill" d="M737.9,94.7L0,0v100h1000V0L737.9,94.7z"></path>
-            </svg>
-        </div>
-        
-        <div class="services-wrapper">
-            <!-- Заголовок секции -->
-            <div class="section-title">
-                <h2>
-                    <span class="title-light">НАШИ</span>
-                    <span class="title-bold">УСЛУГИ</span>
-                </h2>
-            </div>
-            
-            <!-- Одна сетка для всех карточек -->
-            <div class="services-grid">
-                <!-- Карточка 1 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/1back.webp');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Защита кузова</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Карточка 2 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/2back.jpg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Техническое обслуживание</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Карточка 3 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/3back.jpg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Уход за кузовом</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Карточка 4 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/4back.jpeg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Уход за салоном</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Карточка 5 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/5back.jpg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Автостёкла</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Карточка 6 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/6back.jpg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Мототехника</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
 
-                <!-- Карточка 7 -->
-                <a href="#" class="service-card">
-                    <div class="card-background" style="background-image: url('./static/7back.jpg');"></div>
-                    <div class="card-overlay"></div>
-                    <div class="card-content">
-                        <div class="card-text">
-                            <h3 class="card-service-title">Подарочные сертификаты</h3>
-                            <div class="card-link">
-                                <span>Подробнее</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/index.html">
+        <img src="./Logo-Tint.webp" alt="TINT MASTERS Logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-name">TINT MASTERS</div>
+          <div class="brand-sub">Детейлинг студия</div>
         </div>
-    </section>
+      </a>
+
+      <!-- Десктоп меню -->
+      <nav class="nav" aria-label="Главная навигация">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#about">О нас</a></li>
+          <li><a class="nav-link" href="#works">Наши работы</a></li>
+          <li><a class="nav-link" href="#services">Услуги</a></li>
+          <li><a class="nav-link" href="#process">Процесс работы</a></li>
+          <li><a class="nav-link" href="#contacts">Как нас найти</a></li>
+          <li><a class="nav-link" href="#form">Записаться</a></li>
+          <li><a class="nav-link" href="/index-Avto.html">Заказать Авто</a></li>
+        </ul>
+      </nav>
+
+      <!-- Бургер справа -->
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="header-contacts">
+        <a href="tel:89319555009" class="header-phone">
+          8&nbsp;(931)&nbsp;955-50-09
+        </a>
+
+        <div class="header-socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Затемнение -->
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+
+    <!-- Мобильное меню (выезжает справа) -->
+    <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация" aria-hidden="true">
+      <div class="mobile-nav__top">
+        <div class="mobile-nav__title">МЕНЮ</div>
+        <button class="mobile-nav__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+      </div>
+
+      <ul class="mobile-nav__list">
+        <li><a class="mobile-nav__link" href="#about">О нас</a></li>
+        <li><a class="mobile-nav__link" href="#works">Наши работы</a></li>
+        <li><a class="mobile-nav__link" href="#services">Услуги</a></li>
+        <li><a class="mobile-nav__link" href="#process">Процесс работы</a></li>
+        <li><a class="mobile-nav__link" href="#contacts">Как нас найти</a></li>
+        <li><a class="mobile-nav__link" href="#form">Записаться</a></li>
+        <li><a class="mobile-nav__link" href="/index-Avto.html">Заказать Авто</a></li>
+      </ul>
+
+      <!-- CONTACTS (внизу бургера) -->
+      <div class="mobile-nav__contacts">
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Телефон</span>
+          <a href="tel:+79319555009" class="mobile-contact__value">
+            8 (931) 955-50-09
+          </a>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Адрес</span>
+          <span class="mobile-contact__value">
+            Кириши<br>
+            ул. проспект Победы, 33
+          </span>
+        </div>
+
+        <div class="mobile-contact">
+          <span class="mobile-contact__label">Время работы</span>
+          <span class="mobile-contact__value">
+            Пн–Пт 10:00–20:00<br>
+            Вс — по записи
+          </span>
+        </div>
+      </div>
+
+      <div class="mobile-nav__socials">
+        <a href="https://vk.com/tint_ms" target="_blank" aria-label="VK">
+          <i class="fa-brands fa-vk"></i>
+        </a>
+
+        <a href="https://instagram.com/tint_masters_kirishi" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://youtube.com/yourpage" target="_blank" aria-label="Telegram">
+          <i class="fa-brands fa-telegram"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+ 
+
+
+
+
+
+
+  <!-- СТИЛЬНАЯ ФОРМА (вопрос/запись) -->
+ <section id="form" class="section section--dark section--cta reveal">
+    <div class="sec-head">
+      <div class="sec-kicker">REQUEST</div>
+      <h2 class="sec-title">Запись и вопросы</h2>
+      <p class="sec-sub">
+        Оставьте заявку — мы уточним детали, подберём решение и назовём стоимость.
+        Обычно отвечаем быстро в рабочее время.
+      </p>
+    </div>
+    
+    <div class="container">
+      <div class="cta-grid">
+        <form class="cta-form" action="#" method="post">
+          <div class="field">
+            <label>Имя</label>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+
+          <div class="field">
+            <label>Телефон</label>
+            <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+
+          <div class="field">
+            <label>Услуга</label>
+            <select name="service" required>
+              <option value="" disabled selected>Выберите услугу</option>
+              <option>Защита кузова</option>
+              <option>Техническое обслуживание</option>
+              <option>Уход за кузовом</option>
+              <option>Уход за салоном</option>
+              <option>Автостёкла</option>
+              <option>Мототехника</option>
+              <option>Подарочные сертификаты</option>
+              <option>Другое</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Комментарий</label>
+            <textarea name="message" rows="4" placeholder="Марка авто, год, что хотите сделать"></textarea>
+          </div>
+
+          <label class="agree">
+            <input type="checkbox" required>
+            <span>Согласен на обработку персональных данных</span>
+          </label>
+
+          <button class="submit" type="submit">
+            Отправить заявку <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="small">
+            Нажимая “Отправить”, вы соглашаетесь с политикой обработки данных.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Уведомление об отправке -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+    <div class="toast__icon">✓</div>
+    <div class="toast__text">
+      <div class="toast__title">Заявка отправлена</div>
+      <div class="toast__desc">Мы свяжемся с вами в ближайшее время.</div>
+    </div>
+    <button class="toast__close" id="toastClose" type="button" aria-label="Закрыть">×</button>
+  </div>
+
+
+
+
+
+  <!-- Footer (Низ страницы) -->
+  <footer class="footer">
+    <div class="footer-wave"></div>
+
+    <div class="footer-container">
+      <!-- LEFT -->
+      <div class="footer-col">
+        <div class="logo">TINT<br><span>DETAILING</span></div>
+
+        <p class="footer-text">
+          Кириши, проспект Победы, 33<br>
+          8 (931) 955-50-09<br>
+          tintmasters47@yandex.ru
+        </p>
+
+        <a href="#contacts" class="footer-btn">СВЯЗАТЬСЯ</a>
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-col">
+        <h4></h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#works">Наши работы</a></li>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#process">Процесс работы</a></li>
+          <li><a href="#contacts">Как нас найти</a></li>
+          <li><a href="#form">Записаться</a></li>
+          <li><a href="/index-Avto.html">Заказать авто</a></li>
+
+        </ul>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="footer-col">
+        <h4>КОНТАКТЫ</h4>
+
+        <div class="socials">
+          <a href="https://vk.com/tint_ms" target="_blank">
+            <i class="fa-brands fa-vk"></i>
+          </a>
+
+          <a href="https://instagram.com/tint_masters_kirishi" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://youtube.com/yourpage" target="_blank">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      est. 2013 Tint Master Detailing Studio
+    </div>
+  </footer>
+
+
+  <!-- =========================
+     HEADER: эффект при скролле
+     Добавляет класс .is-scrolled,
+     когда страница прокручена вниз
+========================= -->
+  <script>
+    const header = document.querySelector('.site-header');
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        header.classList.toggle('is-scrolled', window.scrollY > 10);
+      },
+      { passive: true }
+    );
+  </script>
+
+
+
+
+
+  <!-- =========================
+     ПЛАВНЫЙ СКРОЛЛ ПО МЕНЮ
+     Desktop + Mobile
+     с учётом высоты header
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.querySelector('.site-header');
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const menuLinks = document.querySelectorAll(
+        '.nav-link[href^="#"], .mobile-nav__link[href^="#"]'
+      );
+
+      menuLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          e.preventDefault();
+
+          const targetPosition =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+
+          // закрываем мобильное меню
+          document.body.classList.remove('no-scroll');
+          document.querySelector('.site-header')?.classList.remove('menu-open');
+          document.getElementById('navOverlay')?.setAttribute('hidden', '');
+        });
+      });
+    });
+  </script>
+
+
+
+
+  <!-- =========================
+     FORM SUBMIT
+     Показ уведомления (toast)
+     и очистка формы
+========================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('#form form.cta-form');
+      const toast = document.getElementById('toast');
+      const toastClose = document.getElementById('toastClose');
+
+      if (!form || !toast || !toastClose) return;
+
+      let toastTimer = null;
+
+      // показать уведомление
+      function showToast() {
+        toast.classList.add('is-show');
+        toast.setAttribute('aria-hidden', 'false');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 4000);
+      }
+
+      // скрыть уведомление
+      function hideToast() {
+        toast.classList.remove('is-show');
+        toast.setAttribute('aria-hidden', 'true');
+      }
+
+      toastClose.addEventListener('click', hideToast);
+
+      // отправка формы
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); // отменяем реальную отправку
+
+        // здесь позже можно добавить fetch / ajax
+
+        showToast();   // показываем уведомление
+        form.reset();  // очищаем поля
+      });
+    });
+  </script>
+
+
+
+ 
+
+
+
+
 </body>
+
 </html>
