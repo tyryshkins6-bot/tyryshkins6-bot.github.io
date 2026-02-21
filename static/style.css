@@ -1595,38 +1595,7 @@ body.menu-open {
   opacity: .9;
 }
 
-/* верх услуг */
-.servicesV2__head {
-  width: min(1400px, 94%);
-  margin: 0 auto 26px;
-  position: relative;
-  z-index: 1;
-}
 
-.servicesV2__headInner {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: clamp(16px, 3vw, 42px);
-  align-items: end;
-}
-
-.servicesV2__title {
-  margin: 0;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(44px, 6vw, 92px);
-  line-height: .92;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #0f0f0f;
-}
-
-.servicesV2__lead {
-  margin: 0;
-  max-width: 52ch;
-  color: rgba(0, 0, 0, .65);
-  line-height: 1.75;
-  font-size: 14px;
-}
 
 /* список услуг */
 .servicesV2__list {
