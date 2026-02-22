@@ -2371,31 +2371,23 @@ body.menu-open {
   color: #555;
 }
 
+/* =========================================================
+   16) ДЕКОР / ПОЛОСА С ФОТО
+   ========================================================= */
 .photo-strip {
   height: 200px;
+  /* Убираем background-attachment! */
   background: url("./1pageback.webp") center / cover no-repeat;
-  
-  /* Для обычных браузеров (десктоп) */
-  background-attachment: fixed;
+  /* ИЛИ подробная запись: */
+  /*
+  background-image: url("./1pageback.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  */
 }
 
-/* Отключаем fixed для мобильных устройств и планшетов */
-@media (max-width: 1024px) { 
-  .photo-strip {
-    background-attachment: scroll; /* Картинка будет прокручиваться вместе со страницей (двигаться) */
-    /* Или можно использовать local, чтобы она двигалась с контентом внутри блока, если он скроллится */
-    /* background-attachment: local; */
-  }
-}
-
-/* Специфично для iOS (дополнительная страховка) */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 1024px) {
-    .photo-strip {
-      background-attachment: scroll;
-    }
-  }
-}
+/* Всё! Никаких @supports больше не нужно. */
 
 /* =========================================================
    17) АДАПТИВ (в одном месте, чтобы легко искать)
