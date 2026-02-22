@@ -2371,20 +2371,30 @@ body.menu-open {
   color: #555;
 }
 
-/* =========================================================
-   16) ДЕКОР / ПОЛОСА С ФОТО
-   ========================================================= */
 .photo-strip {
   height: 200px;
-  background: url("./1pageback.webp") center / cover no-repeat fixed;
+  background: url("./1pageback.webp") center / cover no-repeat;
+  
+  /* Для обычных браузеров (десктоп) */
+  background-attachment: fixed;
 }
-/* Только для iOS */
+
+/* Отключаем fixed для мобильных устройств и планшетов */
+@media (max-width: 1024px) { 
+  .photo-strip {
+    background-attachment: scroll; /* Картинка будет прокручиваться вместе со страницей (двигаться) */
+    /* Или можно использовать local, чтобы она двигалась с контентом внутри блока, если он скроллится */
+    /* background-attachment: local; */
+  }
+}
+
+/* Специфично для iOS (дополнительная страховка) */
 @supports (-webkit-touch-callout: none) {
+  @media (max-width: 1024px) {
     .photo-strip {
-        background-attachment: scroll;
-        /* Имитация fixed через background-position */
-        background-position: center 0;
+      background-attachment: scroll;
     }
+  }
 }
 
 /* =========================================================
