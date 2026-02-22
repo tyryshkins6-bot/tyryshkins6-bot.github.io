@@ -2376,18 +2376,16 @@ body.menu-open {
    ========================================================= */
 .photo-strip {
   height: 200px;
-  /* Убираем background-attachment! */
-  background: url("./1pageback.webp") center / cover no-repeat;
-  /* ИЛИ подробная запись: */
-  /*
-  background-image: url("./1pageback.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  */
+  background: url("./1pageback.webp") center / cover no-repeat fixed;
 }
-
-/* Всё! Никаких @supports больше не нужно. */
+/* Только для iOS */
+@supports (-webkit-touch-callout: none) {
+    .photo-strip {
+        background-attachment: scroll;
+        /* Имитация fixed через background-position */
+        background-position: center 0;
+    }
+}
 
 /* =========================================================
    17) АДАПТИВ (в одном месте, чтобы легко искать)
