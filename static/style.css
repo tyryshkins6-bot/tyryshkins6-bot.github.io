@@ -2462,7 +2462,7 @@ body.menu-open {
   }
 
   .step-card {
-    display: flex;
+    /* display: flex; */
     align-items: flex-start;
     gap: 20px;
     width: 100%;
